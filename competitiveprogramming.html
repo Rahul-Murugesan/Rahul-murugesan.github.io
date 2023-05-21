@@ -30,30 +30,26 @@
                         <img src="image/cp/codeforces.png">
                     </div></a>
                     <h2>Code Forces</h2>
-                    <p>
-                        Rating: <span>000</span><br>
-                        Problem solved: <span>000</span><br>
-                    </p>
+                    <h3>Max rating: <span id="maxratingcf"></span></h3>
+                    <h3>Rating: <span id="ratingcf"></span></h3>
+                    <h3>Total problem solved: <span id="pscf"></span></h3>
                 </div>
                 <div class="items">
                     <a href="https://leetcode.com/Finalgof/"><div id="icon">
                         <img src="image/cp/leetcode.png">
                     </div></a>
                     <h2>Leet Code</h2>
-                    <p>
-                        Rating: <span>000</span><br>
-                        Problem solved: <span>000</span><br>
-                    </p>
+                    <h3>Rank: <span id="ranklc"></span></h3>
+                    <h3>Total problem solved: <span id="pslc"></span></h3>
                 </div>
                 <div class="items">
                     <a href="https://www.codechef.com/users/finalgof"><div id="icon">
                         <img src="image/cp/codechef.png">
                     </div></a>
                     <h2>Code Chef</h2>
-                    <p>
-                        Rating: <span>000</span><br>
-                        Problem solved: <span>000</span><br>
-                    </p>
+                    <h3>Max rating: <span id="maxratingcf">1337</span></h3>
+                    <h3>Rating: <span id="ratingcf">1337</span></h3>
+                    <h3>Total problem solved: <span id="pscf">54</span></h3>
                 </div>
                 <div id="credits">
                     <p>Image by <a href="https://www.freepik.com/free-vector/flat-abstract-wireframe-background_15151400.htm#query=portfolio%20background&position=5&from_view=keyword&track=ais">Freepik</a></p>
@@ -61,5 +57,37 @@
             </section>
         </section>
     </section>
+    <script>
+        let urlcf = "https://codeforces.com/api/user.info?handles=Finalgof";
+        let urlcf_userhandle = "https://codeforces.com/api/user.status?handle=Finalgof";
+        let urllc = "https://leetcode-stats-api.herokuapp.com/Finalgof";
+        let urllc_rating = "https://leetcode.com/graphql?query=query%20{%20userContestRanking(username:%20%20%22Finalgof%22)%20{rating}}"
+        let urlcc;
+
+        fetch(urlcf)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("ratingcf").innerHTML = data.result[0]["rating"], 
+            document.getElementById("maxratingcf").innerHTML = data.result[0]["maxRating"]
+        });
+        fetch(urlcf_userhandle)
+        .then(res => res.json())
+        .then(data => {
+            var solved = 0;
+            for(let i=0; i<data.result.length; i++){
+                if(data.result[i]["verdict"] === "OK"){
+                    solved++;
+                }
+            }
+            document.getElementById("pscf").innerHTML = solved;
+        });
+
+        fetch(urllc)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("ranklc").innerHTML = data["ranking"],
+            document.getElementById("pslc").innerHTML = data["totalSolved"]
+        });
+    </script>
 </body>
 </html>
