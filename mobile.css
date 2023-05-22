@@ -24,20 +24,23 @@ a{
 }
 #navigation #links {
     display: flex;
-    width: 84%;
-    margin: auto;
+    width: 55%;
+    margin: 0px;
     padding: 20px 0;
     align-items: center;
     justify-content: space-between;
 }
 #navigation .logo{
+    position: relative;
     width: 100px;
     transition: 0.3s;
 }
 #navigation ul li {
-    display: inline-block;
-    list-style: none;
-    margin: 10px 20px;
+    padding: 0px 20px;
+    background-color: white;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
 }
 #navigation ul li a{
     text-decoration: none;
@@ -71,7 +74,7 @@ a{
 }
 #cp .container{
     min-height: 100vh;
-    width: 100%;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,7 +82,7 @@ a{
     text-align: center;
     max-width: 1500px;
     margin: 0 auto;
-    padding: 100px 0;
+    padding: 100px 0px;
 }
 #projects{
     min-height: 100vh;
@@ -164,7 +167,7 @@ a{
 }
 /* service top ends */
 
-/* cp bottom starts */
+/* service bottom starts */
 #services .service-bottom{
     display: flex;
     align-items: center;
@@ -204,9 +207,9 @@ a{
 }
 /* service bottom ends */
 
-/* service top starts */
+/* cp top starts */
 #cp .cp-top h1{
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 300;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -217,11 +220,12 @@ a{
     color: orange;
 }
 #cp .cp-top p{
-    font-weight: 300;
+    font-weight: 100;
     margin-top: 5px;
-    line-height: 2.5rem;
+    line-height: 2rem;
     font-size: 1.4rem;
     letter-spacing: 0.05rem;
+    text-align: center;
 }
 /* cp top ends */
 
@@ -237,7 +241,7 @@ a{
 }
 #cp .items{
     position: relative;
-    flex-basis: 60%;
+    flex-basis: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -257,7 +261,7 @@ a{
     height: 100%;
     width: 100%;
     background-color: black;
-    opacity: 0.6;
+    opacity: 0;
     z-index: -1;
 }
 #cp .items:hover #icon{
@@ -268,7 +272,7 @@ a{
 /* credits starts */
 #credits{
     position: relative;
-    flex-basis: 60%;
+    flex-basis: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
