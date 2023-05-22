@@ -55,7 +55,7 @@ a{
 .menu{
     display: none;
     position: absolute;
-    top: 50px;
+    top: 70px;
     left: 0px;
     height: calc(100vh - 50vh);
     width: 100%;
@@ -297,6 +297,7 @@ a{
 /* credits starts */
 #credits{
     position: relative;
+    top: 10px;
     flex-basis: 100%;
     display: flex;
     align-items: flex-start;
