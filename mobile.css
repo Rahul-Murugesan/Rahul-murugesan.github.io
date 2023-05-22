@@ -42,7 +42,6 @@ a{
 .open .bar2{
     opacity: 0;
 }
-  
 .open .bar3{
     -webkit-transform: rotate(45deg) translate(-6px, -8px);
     transform: rotate(45deg) translate(-6px, -8px);
@@ -87,7 +86,7 @@ a{
 }
 #services .container{
     min-height: 100vh;
-    width: 100%;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,7 +94,7 @@ a{
     text-align: center;
     max-width: 1500px;
     margin: 0 auto;
-    padding: 100px 0;
+    padding: 100px 0px;
 }
 #cp .container{
     min-height: 100vh;
@@ -173,7 +172,7 @@ a{
 
 /* service top starts */
 #services .service-top h1{
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 300;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -184,11 +183,12 @@ a{
     color: orange;
 }
 #services .service-top p{
-    font-weight: 300;
+    font-weight: 100;
     margin-top: 5px;
-    line-height: 2.5rem;
+    line-height: 2rem;
     font-size: 1.4rem;
     letter-spacing: 0.05rem;
+    text-align: center;
 }
 /* service top ends */
 
@@ -204,7 +204,7 @@ a{
 }
 #services .items{
     position: relative;
-    flex-basis: 60%;
+    flex-basis: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
