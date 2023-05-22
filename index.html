@@ -4,22 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        console.log(window.screen.availWidth);
-    </script>
+    <script src="index.js"></script>    
     <link href="style.css" rel="stylesheet">
     <link href="mobile.css" rel="stylesheet" media="screen and (min-width: 320px) and (max-width: 430px)">
     <title>Rahul Murugesan</title>
 </head>
 <body>
     <section id="navigation">
-        <nav id="links">
-            <a href="/"><img src="image/logo.png" class="logo"></a>
-            <ul>
+        <a href="/"><img src="image/logo.png" class="logo"></a>
+        <div id="hamburger" onclick="togglemenu(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <ul class="menu">
                 <li><a href="services">Services</a></li>
                 <li><a href="competitiveprogramming">Competitive Programming</a></li>
                 <li><a href="projects">Projects</a></li>
             </ul>
+        </div>
+        <nav id="links">
+            <div class="desktopmenu">
+                <ul>
+                    <li><a href="services">Services</a></li>
+                    <li><a href="competitiveprogramming">Competitive Programming</a></li>
+                    <li><a href="projects">Projects</a></li>
+                </ul>
+            </div>
         </nav>
     </section>
     <section id="root">

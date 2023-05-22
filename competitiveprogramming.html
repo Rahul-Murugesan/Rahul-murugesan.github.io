@@ -4,19 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js"></script>
     <link href="style.css" rel="stylesheet">
     <link href="mobile.css" rel="stylesheet" media="screen and (min-width: 320px) and (max-width: 430px)">
     <title>competitive Programming</title>
 </head>
 <body>
     <section id="navigation">
-        <nav id="links">
-            <a href="/"><img src="image/logo.png" class="logo"></a>
-            <ul>
-                <li><a href="/">Home</a></li>
+        <a href="/"><img src="image/logo.png" class="logo"></a>
+        <div id="hamburger" onclick="togglemenu(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <ul class="menu">
                 <li><a href="services">Services</a></li>
+                <li><a href="competitiveprogramming">Competitive Programming</a></li>
                 <li><a href="projects">Projects</a></li>
             </ul>
+        </div>
+        <nav id="links">
+            <div class="desktopmenu">
+                <ul>
+                    <li><a href="services">Services</a></li>
+                    <li><a href="competitiveprogramming">Competitive Programming</a></li>
+                    <li><a href="projects">Projects</a></li>
+                </ul>
+            </div>
         </nav>
     </section>
     <section id="cp">
@@ -58,37 +71,5 @@
             </section>
         </section>
     </section>
-    <script>
-        let urlcf = "https://codeforces.com/api/user.info?handles=Finalgof";
-        let urlcf_userhandle = "https://codeforces.com/api/user.status?handle=Finalgof";
-        let urllc = "https://leetcode-stats-api.herokuapp.com/Finalgof";
-        let urllc_rating = "https://leetcode.com/graphql?query=query%20{%20userContestRanking(username:%20%20%22Finalgof%22)%20{rating}}"
-        let urlcc;
-
-        fetch(urlcf)
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById("ratingcf").innerHTML = data.result[0]["rating"], 
-            document.getElementById("maxratingcf").innerHTML = data.result[0]["maxRating"]
-        });
-        fetch(urlcf_userhandle)
-        .then(res => res.json())
-        .then(data => {
-            var solved = 0;
-            for(let i=0; i<data.result.length; i++){
-                if(data.result[i]["verdict"] === "OK"){
-                    solved++;
-                }
-            }
-            document.getElementById("pscf").innerHTML = solved;
-        });
-
-        fetch(urllc)
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById("ranklc").innerHTML = data["ranking"],
-            document.getElementById("pslc").innerHTML = data["totalSolved"]
-        });
-    </script>
 </body>
 </html>
