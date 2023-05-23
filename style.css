@@ -87,14 +87,15 @@ a{
 }
 #projects{
     min-height: 100vh;
-    font-size: 50px;
+    width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-#projects span{
-    color: orange;
+    flex-direction: column;
+    text-align: center;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 100px 0;
 }
 /* root contailers ends */
 
@@ -208,7 +209,7 @@ a{
 }
 /* service bottom ends */
 
-/* service top starts */
+/* cp top starts */
 #cp .cp-top h1{
     font-size: 3rem;
     font-weight: 300;
@@ -268,6 +269,70 @@ a{
     opacity: 0.5;
 }
 /* cp bottom ends */
+
+/* project top starts */
+#projects .project-top h1{
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    text-align: center;
+}
+#projects .project-top span{
+    color: orange;
+}
+#projects .project-top p{
+    font-weight: 300;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.05rem;
+}
+#projects .project.top p span{
+    color: orange;
+}
+/* project top ends */
+
+/* project bottom starts */
+#projects .project-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#projects .items{
+    color: wheat;
+}
+#projects .items{
+    position: relative;
+    flex-basis: 60%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    border-radius:5px;
+    background-image: url(./image/cp/bg.jpg);
+    background-size: cover;
+    margin: 10px 5px;
+    z-index: 1;
+}
+#projects .items::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: -1;
+}
+#projects .items:hover #icon{
+    opacity: 0.5;
+}
+/* project bottom ends */
 
 /* credits starts */
 #credits{
