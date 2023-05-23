@@ -32,12 +32,3 @@ fetch(urllc)
 function togglemenu(menu) {
     menu.classList.toggle('open');
 }
-
-// change index shape based on device
-window.onload=function(){
-    (function (screenres, Image){
-    x = window.matchMedia(screenres)
-    if(x.matches){
-        document.getElementById("shape").src = Image;
-    }
-})("(min-width: 320px) and (max-width: 430px)", "image/mobileshape.png");}
