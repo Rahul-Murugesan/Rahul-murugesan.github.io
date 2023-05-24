@@ -1,10 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+/*color mode start */
+.darkmode{
+    --primarycolor: black;
+    --secondarycolor: white;
+}
+:root{
+    --primarycolor: white;
+    --secondarycolor: black;
+}
+/*color mode ends */
+
 /* over all starts */
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+body{
+    background-color: var(--primarycolor);
+    color: var(--secondarycolor);
 }
 html{
     font-size: 20px;
@@ -18,14 +33,14 @@ a{
 /* navigation bar starts */
 .logo{
     width: 100px;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
 }
 .logo:hover{
     transform: scale(1.1);
 }
 #navigation{
-    padding: 10px 50px;
-    background-color: white;
+    padding: 10px 30px;
+    background-color: var(--primarycolor);
     height: 50px;
     display: flex;
     flex-direction: row;
@@ -45,11 +60,11 @@ a{
 }
 #navigation ul li a{
     text-decoration: none;
-    color: #000;
+    color: var(--secondarycolor);
     font-weight: bold;
 }
 #navigation li a:hover{
-    color: orange;
+    color: rgb(255, 165, 0);
 }
 #hamburger{
     display: none;
@@ -113,7 +128,7 @@ a{
     transition-property: background-color, color;
 }
 #root #cvd:hover{
-    color: white;
+    color: var(--primarycolor);
     background-color: orange;
 }
 /*cv download button ends */
