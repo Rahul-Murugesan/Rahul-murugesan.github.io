@@ -12,25 +12,27 @@
 <body>
     <section id="navigation">
         <a href="/"><img src="image/logo.png" class="logo"></a>
-        <div id="hamburger" onclick="togglemenu(this)">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-            <ul class="menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="services">Services</a></li>
-                <li><a href="projects">Projects</a></li>
-            </ul>
-        </div>
-        <nav id="links">
-            <div class="desktopmenu">
-                <ul>
-                    <li><a href="/">Home</a></li>
+        <div class="mobiletools">
+            <div id="hamburger" onclick="togglemenu(this)">
+                <div id="bar" class="bar1"></div>
+                <div id="bar" class="bar2"></div>
+                <div id="bar" class="bar3"></div>
+                <ul class="menu">
                     <li><a href="services">Services</a></li>
+                    <li><a href="competitiveprogramming">Competitive Programming</a></li>
                     <li><a href="projects">Projects</a></li>
                 </ul>
             </div>
-        </nav>
+        </div>
+        <div class="tools">
+            <nav class="links">
+                <ul>
+                    <li><a href="services">Services</a></li>
+                    <li><a href="competitiveprogramming">Competitive Programming</a></li>
+                    <li><a href="projects">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
     </section>
     <section id="cp">
         <section class="container">

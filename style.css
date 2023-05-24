@@ -39,19 +39,18 @@ a{
     transform: scale(1.1);
 }
 #navigation{
-    padding: 10px 30px;
+    padding: 0px 30px;
     background-color: var(--primarycolor);
     height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-#navigation #links{
+#navigation .tools{
     position: relative;
+    top: 20px;
     display: flex;
-    top: 10px;
     align-items: flex-start;
-    justify-content: space-between;
 }
 #navigation ul li {
     display: inline-block;
@@ -66,7 +65,7 @@ a{
 #navigation li a:hover{
     color: rgb(255, 165, 0);
 }
-#hamburger{
+#navigation .mobiletools{
     display: none;
 }
 /* navigation bar ends */
@@ -140,6 +139,9 @@ a{
 /* name ends */
 
 /* image starts */
+img{
+    user-select: none;
+}
 #image{
     width: 45%;
     height: 80%;

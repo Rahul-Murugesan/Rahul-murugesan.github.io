@@ -1,13 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+/* light/dark mode start */
+.darkmode{
+    --primarycolor: black;
+    --secondarycolor: white;
+}
+:root{
+    --primarycolor: white;
+    --secondarycolor: black;
+}
+/* light/dark mode ends */
+
+
 /* over all starts */
 *{
-    margin: auto;
     box-sizing: border-box;
 }
 body{
-    background-color: white;
-    color: black;
+    background-color: var(--primarycolor);
+    color: var(--secondarycolor);
 }
 html{
     font-size: 20px;
@@ -20,21 +31,28 @@ a{
 
 /* navigation bar starts */
 #navigation{
-    padding: 0 20px;
-    background-color: white;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primarycolor);
     height: 50px;
     display: flex;
     justify-content: space-between;
 }
+#navigation .mobiletools{
+    margin: 0;
+    display: flex;
+}
+#navigation .mode{
+    margin: auto 20px;
+}
 #hamburger{
-    margin: 20px 250px;
-    display: none;
+    display: block;
     cursor: pointer;
 }
-#hamburger div{
+#hamburger #bar{
     width: 35px;
     height: 3px;
-    background-color: black;
+    background-color: var(--secondarycolor);
     margin: 6px 0px;
     transition: 0.4s;
 }
@@ -48,7 +66,6 @@ a{
 .open .bar3{
     -webkit-transform: rotate(45deg) translate(-6px, -8px);
     transform: rotate(45deg) translate(-6px, -8px);
-    background-color: rgb(255, 123, 0);
 }
 .open .menu{
     animation: menuopen 0.4s ease;
@@ -80,16 +97,15 @@ a{
         opacity: 100;
     }
 }
-#navigation .desktopmenu{
+#navigation .tools{
     display: none;
 }
-#hamburger{
-    display: block;
-}
 .logo{
-    position: relative;
     width: 100px;
     transition: 0.3s;
+}
+#navigation a{
+    margin: 0;
 }
 .logo:hover{
     transform: scale(1.1);
@@ -168,7 +184,7 @@ a{
 #image{
     left: 0;
     width: auto;
-    height: 65%;
+    height: 66%;
     bottom: 30px;
 }
 #image img{
