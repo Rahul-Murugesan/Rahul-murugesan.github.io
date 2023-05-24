@@ -46,7 +46,7 @@ a{
     flex-direction: row;
     justify-content: space-between;
 }
-#navigation #links {
+#navigation #links{
     position: relative;
     display: flex;
     top: 10px;
