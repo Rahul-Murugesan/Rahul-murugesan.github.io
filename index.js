@@ -1,12 +1,3 @@
-// dark mode cookie
-window.onload=function(){
-    if(localStorage.getItem("mode") === "dark"){
-        document.body.classList.toggle("darkmode");
-        const ele = document.getElementById("modeimg");
-        ele.src = "image/mode/lightmodehover.png";
-        ele.alt = "lightmodehover";
-}};
-
 // competitve programming 
 let urlcf = "https://codeforces.com/api/user.info?handles=Finalgof";
 let urlcf_userhandle = "https://codeforces.com/api/user.status?handle=Finalgof";
@@ -52,40 +43,44 @@ function togglemenu(menu) {
 
 // dark/light mode change image on hover
 function modehover(ele){
-    if(ele.alt === "darkmode"){
-        ele.src = "image/mode/darkmodehover.png";
-        ele.alt = "darkmodehover";
-    }
-    else if(ele.alt === "lightmode"){
+    const Body = document.body.classList;
+    if(Body.contains("darkmode")){
         ele.src = "image/mode/lightmodehover.png";
-        ele.alt = "lightmodehover";
+    }
+    else{
+        ele.src = "image/mode/darkmodehover.png";
     }
 }
 
 // dark/light mode change image when not hover
 function modenothover(ele){
-    if(ele.alt === "darkmodehover"){
-        ele.src = "image/mode/darkmode.png";
-        ele.alt = "darkmode";
-    }
-    else if(ele.alt === "lightmodehover"){
+    const Body = document.body.classList;
+    if(Body.contains("darkmode")){
         ele.src = "image/mode/lightmode.png";
-        ele.alt = "lightmode";
+    }
+    else{
+        ele.src = "image/mode/darkmode.png";
     }
 }
 
 // change dark/light mode
 function togglemode(ele){
-    if(ele.alt === "darkmodehover"){
+    const Body = document.body.classList;
+    if(Body.contains("darkmode")){
+        ele.src = "image/mode/darkmodehover.png";
+        localStorage.setItem("mode", "light");
+    }
+    else{
         ele.src = "image/mode/lightmodehover.png";
-        ele.alt = "lightmodehover";
-        document.body.classList.toggle("darkmode");
         localStorage.setItem("mode", "dark");
     }
-    else if(ele.alt === "lightmodehover"){
-        ele.src = "image/mode/darkmodehover.png";
-        ele.alt = "darkmodehover";
-        document.body.classList.toggle("darkmode");
-        localStorage.setItem("mode", "light");
+    Body.toggle("darkmode");
+}
+
+// dark mode cookie
+window.onload=function(){
+    ele = document.getElementsByClassName("modeimg");
+    if(localStorage.getItem("mode") === "dark"){
+        togglemode(ele);
     }
 }

@@ -134,6 +134,7 @@ a{
 
 /* name starts */
 #root #name{
+    z-index: 1;
     position: absolute;
 }
 /* name ends */
