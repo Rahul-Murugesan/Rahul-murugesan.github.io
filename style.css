@@ -28,11 +28,14 @@ html{
 a{
     text-decoration: none;
 }
+.tspan{
+    color: orange;
+}
 /* over all ends */
 
 /* loading screen starts */
 #loadingscreen{
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,7 +81,7 @@ a{
 #navigation ul li {
     display: inline-block;
     list-style: none;
-    margin: 10px 20px;
+    margin: 10px 10px;
 }
 #navigation ul li a{
     text-decoration: none;
@@ -198,9 +201,6 @@ img{
     letter-spacing: 0.1rem;
     text-align: center;
 }
-#services .service-top span{
-    color: orange;
-}
 #services .service-top p{
     font-weight: 300;
     margin-top: 5px;
@@ -210,7 +210,7 @@ img{
 }
 /* service top ends */
 
-/* cp bottom starts */
+/* service bottom starts */
 #services .service-bottom{
     display: flex;
     align-items: center;
@@ -258,9 +258,6 @@ img{
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     text-align: center;
-}
-#cp .cp-top span{
-    color: orange;
 }
 #cp .cp-top p{
     font-weight: 300;
@@ -320,18 +317,12 @@ img{
     letter-spacing: 0.1rem;
     text-align: center;
 }
-#projects .project-top span{
-    color: orange;
-}
 #projects .project-top p{
     font-weight: 300;
     margin-top: 5px;
     line-height: 2.5rem;
     font-size: 1.4rem;
     letter-spacing: 0.05rem;
-}
-#projects .project.top p span{
-    color: orange;
 }
 /* project top ends */
 
