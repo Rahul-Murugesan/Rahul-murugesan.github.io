@@ -30,6 +30,29 @@ a{
 }
 /* over all ends */
 
+/* loading screen starts */
+#loadingscreen{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+#loadingscreen img{
+    scale: 40%;
+}
+#loadingscreen h1{
+    position: relative;
+    padding-right: auto;
+    top: -20%;
+    color: white;
+}
+/* loading screen ends */
+
 /* navigation bar starts */
 .logo{
     width: 100px;
