@@ -1,0 +1,89 @@
+body{
+    overflow: hidden;
+}
+
+h2{
+    margin-left: 10px;
+}
+
+/* bar overall starts */
+.bar{
+    position: absolute;
+    width: 1.5px;
+    background-color: gray;
+}
+/* bar overall ends */
+
+#blog .container{
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding-top: 3vh;
+}
+
+/* blog top starts */
+#blog .blog-top h1{
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    text-align: center;
+}
+#blog .blog-top p{
+    font-weight: 300;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.05rem;
+}
+/* blog top ends */
+
+/* blog main starts */
+#blog .blog-bottom{
+    height: 79vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
+#blog .main{
+    position: relative;
+    height: 100%;
+    width: 69%;
+    right: 29.5%;
+}
+.main .bar{
+    height: 169.5%;
+    top: -86%;
+    left: 50%;
+    transform: rotate(90deg);
+}
+/* blog main ends */
+
+.bar1{
+    height: 100%;
+    top: 110px;
+    left: 69.7%;
+}
+
+/* status bar starts */
+#statusbar{
+    position: relative;
+    height: 102%;
+    width: 30%;
+    left: 70%;
+    top: -2%;
+}
+#statusbar .bar{
+    height: 70%;
+    top: -37%;
+    left: 50%;
+    transform: rotate(90deg);
+}
+/* status bar ends */
