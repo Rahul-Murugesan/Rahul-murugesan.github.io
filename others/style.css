@@ -4,6 +4,11 @@ body{
 
 h2{
     margin-left: 10px;
+    color: orange;
+}
+h4{
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 /* bar overall starts */
@@ -87,3 +92,24 @@ h2{
     transform: rotate(90deg);
 }
 /* status bar ends */
+
+/* filter starts */
+#filter{
+    display: flex;
+    flex-direction: row;
+}
+#filterbtn{
+    position: relative;
+    top: -11px;
+    right: 20px;
+    scale: 25%;
+}
+
+#expand{
+    position: absolute;
+    z-index: 900;
+}
+#expand ul li:hover{
+    color: orange;
+}
+/* filter ends */
