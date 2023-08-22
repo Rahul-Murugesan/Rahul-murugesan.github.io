@@ -28,6 +28,9 @@ html{
 a{
     text-decoration: none;
 }
+li{
+    cursor: pointer;
+}
 .tspan{
     color: orange;
 }

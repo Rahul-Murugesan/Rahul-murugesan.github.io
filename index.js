@@ -7,7 +7,6 @@ const loadingscreen = setInterval(function(){
     }
     ele.innerHTML = "Loading"+".".repeat(dot)+"&nbsp".repeat(3-dot);
     dot += 1;
-    console.log("ok");
 }, 500)
 
 // competitve programming 
