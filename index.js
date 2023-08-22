@@ -1,3 +1,15 @@
+// loading screen
+var dot = 1;
+const loadingscreen = setInterval(function(){
+    ele = document.getElementById("loadingtxt");
+    if(dot == 4){
+        dot = 1;
+    }
+    ele.innerHTML = "Loading"+".".repeat(dot)+"&nbsp".repeat(3-dot);
+    dot += 1;
+    console.log("ok");
+}, 500)
+
 // competitve programming 
 let urlcf = "https://codeforces.com/api/user.info?handles=Finalgof";
 let urlcf_userhandle = "https://codeforces.com/api/user.status?handle=Finalgof";
@@ -77,10 +89,15 @@ function togglemode(ele){
     Body.toggle("darkmode");
 }
 
-// dark mode cookie
 window.onload=function(){
-    ele = document.getElementsByClassName("modeimg");
+    var lscr = document.getElementById("loadingscreen");
+    lscr.parentNode.removeChild(lscr);
+    clearInterval(loadingscreen);
+
+    ele = document.getElementById("modeicon");
     if(localStorage.getItem("mode") === "dark"){
-        togglemode(ele);
+        const Body = document.body.classList;
+        Body.toggle("darkmode");
+        ele.src = "image/mode/lightmode.png";
     }
 }
