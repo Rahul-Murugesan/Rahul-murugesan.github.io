@@ -1,0 +1,107 @@
+body{
+	overflow-x: hidden;
+}
+
+/* bar overall starts */
+.bar{
+    position: absolute;
+    width: 1.5px;
+    background-color: gray;
+}
+/* bar overall ends */
+
+#blog{
+	height: auto;
+	width: 100vw;
+}
+h1{
+	color: orange;
+	padding-left: 10px;
+}
+h3{
+	color: orange;
+	padding-top: 10px;
+}
+h4{
+	padding-top: 20px;
+	color: orange;
+}
+h6{
+	color: gray;
+	padding-top: 10px;
+}
+h6 span{
+	color: var(--secondarycolor);
+}
+p{
+	padding: 15px;
+	line-height: 1.5rem;
+}
+
+a{
+	text-decoration: none;
+}
+
+.container{
+	height: auto;
+	width: 100%;
+	margin-top: 3%;
+	margin-left: 10%;
+}
+.container .bor{
+	border: 1.5px solid gray;;
+}
+#top{
+	height: 7%;
+	width: 80%;
+}
+
+#bottom{
+	height: auto;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+#left{
+	display: table-row;
+	width: 20%;
+}
+
+#left img{
+	height: 400px;
+	width: 250px;
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-top: 8px;
+}
+#left div{
+	margin-left: 10px;
+}
+
+#left .bari{
+	height: 36%;
+	transform: rotate(90deg);
+	top: 66.5%;
+	right: 80.3%;
+}
+
+#left .bars{
+	height: 36%;
+	transform: rotate(90deg);
+	top: 103.7%;
+	right: 80.3%;
+}
+
+#right{
+	height: auto;
+	width: 60%;
+}
+
+#right .barr{
+	height: 115%;
+	transform: rotate(90deg);
+	top: -32.5%;
+	right: 40%;
+}
