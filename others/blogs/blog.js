@@ -1,7 +1,7 @@
-const mangaurl = "https://api.jikan.moe/v4/manga/2";
+const mangaurl = "https://api.jikan.moe/v4/manga/";
 
 window.addEventListener("load", async function(){
-	const url = mangaurl;
+	const url = mangaurl+document.getElementById("eid").innerText;
 	const response = await fetch(url);
 	var data = await response.json();
 	data = data.data
@@ -18,5 +18,10 @@ window.addEventListener("load", async function(){
 	document.getElementById("chap").innerHTML += data.chapters;
 	document.getElementById("vol").innerHTML += data.volumes;
 	document.getElementById("demog").innerHTML += data.demographics[0].name;
+
+	document.getElementById("score").innerHTML += `${data.score} (scored by ${data.scored_by} users)`;
+	document.getElementById("rank").innerHTML += data.rank;
+	document.getElementById("pop").innerHTML += data.popularity;
+	document.getElementById("mem").innerHTML += data.members;
 
 })
