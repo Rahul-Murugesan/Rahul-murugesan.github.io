@@ -1,7 +1,9 @@
 body{
     overflow: hidden;
 }
-
+.bor{
+    border: 1.5px solid gray;;
+}
 h2{
     margin-left: 10px;
     color: orange;
@@ -63,7 +65,7 @@ h4{
     width: 69%;
     right: 29.5%;
 }
-.main .bar{
+.main .barm{
     height: 169.5%;
     top: -86%;
     left: 50%;
@@ -85,7 +87,7 @@ h4{
     left: 70%;
     top: -2%;
 }
-#statusbar .bar{
+#statusbar .bars{
     height: 70%;
     top: -37%;
     left: 50%;
@@ -109,13 +111,52 @@ h4{
     position: absolute;
     display: none;
     z-index: 900;
-    top: 17%;
-    margin-left: 20px;
+    top: 15.68%;
+    margin-left: 1.5%;
 }
 #expand ul{
+    background-color: var(--primarycolor);
+    padding: 0 70px 10px 5px;
     list-style: none;
 }
 #expand ul li:hover{
     color: orange;
 }
 /* filter ends */
+
+/* blog display starts */
+#blogdis{
+    position: relative;
+    height: 80%;
+    width: 95%;
+    top: -7%;
+    margin-left: 1.5%;
+}
+
+#blogdis .row{
+    position: relative;
+    height: 22%;
+    width: 98%;
+    margin-top: 10px;
+    margin-left: 1%;
+}
+
+.rowbar1{
+    height: 200%;
+    top: -75%;
+    left: 50%;
+    transform: rotate(90deg);
+}
+.rowbar2{
+    height: 200%;
+    top: -50.5%;
+    left: 50%;
+    transform: rotate(90deg);
+}
+.rowbar3{
+    height: 200%;
+    top: -26%;
+    left: 50%;
+    transform: rotate(90deg);
+}
+/* blog display ends */
