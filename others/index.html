@@ -62,18 +62,18 @@
                         Blogs
                     </h2>
                     <div id="filter">
-                        <h4 align="left">
+                        <h4 id="filteropt" align="left">
                             Recent
                         </h4>
-                        <button id="filterbtn"><img src="../image/arrow.png"></button>
+                        <button id="filterbtn" onclick="ExpandBtn(this)"><img src="../image/arrow.png"></button>
                     </div>
                     <div id="expand">
                         <ul align="left">
-                            <li>Recent</li>
-                            <li>Anime</li>
-                            <li>TV Series</li>
-                            <li>Movies</li>
-                            <li>Tech</li>
+                            <li onclick="filter(this)">Recent</li>
+                            <li onclick="filter(this)">Anime</li>
+                            <li onclick="filter(this)">TV Series</li>
+                            <li onclick="filter(this)">Movies</li>
+                            <li onclick="filter(this)">Tech</li>
                         </ul>
                     </div>
                 </div>

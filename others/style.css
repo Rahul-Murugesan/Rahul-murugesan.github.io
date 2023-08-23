@@ -107,7 +107,13 @@ h4{
 
 #expand{
     position: absolute;
+    display: none;
     z-index: 900;
+    top: 17%;
+    margin-left: 20px;
+}
+#expand ul{
+    list-style: none;
 }
 #expand ul li:hover{
     color: orange;
