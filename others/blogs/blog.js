@@ -24,4 +24,6 @@ window.addEventListener("load", async function(){
 	document.getElementById("pop").innerHTML += data.popularity;
 	document.getElementById("mem").innerHTML += data.members;
 
+	document.getElementById("loaded").innerText = "true";
+
 })
