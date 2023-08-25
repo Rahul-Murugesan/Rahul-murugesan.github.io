@@ -191,6 +191,34 @@ h4{
 }
 /* blog display ends */
 
+/* poster expand starts */
+#expandimg{
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+}
+#expandimg #wrapper{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+#expandimg #expandedimg{
+}
+#expandimg #closebtn{
+    position: absolute;
+    scale: 60%;
+}
+
+/* poster expand ends */
+
 /* inner loading screen starts */
 #cntloadingscreen{
     position: relative;

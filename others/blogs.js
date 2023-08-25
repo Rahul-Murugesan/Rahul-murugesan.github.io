@@ -81,5 +81,36 @@ async function fill(){
 }
 
 function expandimg(ele){
+    document.getElementById("expandedimg").src = ele.src;
+    document.getElementById("expandimg").style.display = "flex";
+}
 
+var clicked = false;
+function CloseBtn(ele, opt=0){
+    if(clicked == false){
+        document.getElementById("closebtn").removeAttribute("hidden");
+    }
+    if(opt == 0){
+        clicked = true;
+        document.getElementById("closebtn").setAttribute("hidden", "hidden");
+        document.getElementById("expandimg").style.display = "none";
+        document.getElementById("expandimg").src = "";
+    }
+    else if(opt == 1){
+        clicked = false;
+        ele.src = "../image/closehover.png";
+    }
+    else{
+        clicked = false;
+        ele.src = "../image/close.png";
+    }
+}
+
+function ShowClosebtn(show){
+    if(show){
+        document.getElementById("closebtn").removeAttribute("hidden");
+    }
+    else{
+        document.getElementById("closebtn").setAttribute("hidden", "hidden");
+    }
 }

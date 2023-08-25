@@ -13,6 +13,12 @@
     <title>Blogs & Others</title>
 </head>
 <body>
+    <div id="expandimg">
+        <div id="wrapper">
+            <img src="" id="expandedimg" onmouseover="ShowClosebtn(true)" onmouseleave="ShowClosebtn(false)">
+            <img alt="close" src="../image/close.png" id="closebtn" onclick="CloseBtn(this)" onmouseenter="CloseBtn(this, 1)" onmouseleave="CloseBtn(this, 2)" hidden>
+        </div>
+    </div>
     <object id="blogcnt" data="" onload="fill()" style="position: absolute; top: -1000%"></object>
     <div id="loadingscreen">
         <img src="../image/loadingscreen.gif">
