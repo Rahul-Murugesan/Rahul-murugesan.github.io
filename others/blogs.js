@@ -56,9 +56,13 @@ async function fill(){
             cnt = document.getElementById("blogcnt").contentWindow.document;
             await new Promise(r => setTimeout(r, 0));
         }
-        var name = cnt.getElementById("name").innerText;
-        console.log(document.getElementById("blogcnt").contentWindow.document.getElementById("datetime").innerText);
-        document.getElementById(`row${load}`).innerHTML += `<h3 align="left">${name}</h3>`;
+        const src = document.getElementById("blogcnt").data;
+        const name = cnt.getElementById("name").innerText;
+        const blogtitle = cnt.getElementById("blogtitle").innerText;
+        const datetime = cnt.getElementById("datetime").innerText;
+        const poster = cnt.getElementById("img").src;
+        document.getElementById(`poster${load}`).src = poster
+        document.getElementById(`row${load}`).innerHTML += `<div class="info"> <a href=${src}><h3 align="left">${name}: <span>${blogtitle}</span></h3></a> <h6 align="left">${datetime}</h6> </div>`;
 
         document.getElementById("blogcnt").data=blog[load];
         load += 1
@@ -67,8 +71,15 @@ async function fill(){
             for(var i=3; i<document.getElementById("blogdis").childNodes.length; i+=2){
                 document.getElementById("blogdis").childNodes[i].removeAttribute("hidden");
             }
+            for(var i=3; i<document.getElementById("blogdis").childNodes.length; i+=4){
+                document.getElementById("blogdis").childNodes[i].style.display = "flex";
+            }
             lscr = document.getElementById("cntloadingscreen");
             lscr.parentNode.removeChild(lscr);
         }
     }
+}
+
+function expandimg(ele){
+
 }

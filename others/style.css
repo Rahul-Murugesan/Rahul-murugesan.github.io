@@ -2,7 +2,11 @@ body{
     overflow: hidden;
 }
 .bor{
-    border: 1.5px solid gray;;
+    border: 1.5px solid gray;
+}
+a{
+    color: inherit;
+    text-decoration: none;
 }
 h2{
     margin-left: 10px;
@@ -137,26 +141,53 @@ h4{
     position: relative;
     height: 22%;
     width: 98%;
-    margin-top: 10px;
+    margin-top: 11.5px;
     margin-left: 1%;
+    display: none;
+    flex-direction: row;
 }
 .rowbar1{
     height: 200%;
-    top: -75%;
+    top: -74.8%;
     left: 50%;
     transform: rotate(90deg);
 }
 .rowbar2{
     height: 200%;
-    top: -50.5%;
+    top: -49.9%;
     left: 50%;
     transform: rotate(90deg);
 }
 .rowbar3{
     height: 200%;
-    top: -26%;
+    top: -25.1%;
     left: 50%;
     transform: rotate(90deg);
+}
+.poster{
+    cursor: pointer;
+    position: relative;
+    top: -5%;
+    height: 100%;
+    width: 10%;
+    margin-right: 20px;
+    background-color: red;
+}
+.poster:hover{
+    border: 2px solid orange;
+}
+.info{
+    position: relative;
+    top: 10%;
+}
+#blogdis h3{
+    cursor: pointer;
+}
+#blogdis h3:hover{
+    color: orange;
+}
+#blogdis h3 span{
+    font-size: 0.95rem;
 }
 /* blog display ends */
 
