@@ -140,7 +140,6 @@ h4{
     margin-top: 10px;
     margin-left: 1%;
 }
-
 .rowbar1{
     height: 200%;
     top: -75%;
@@ -160,3 +159,11 @@ h4{
     transform: rotate(90deg);
 }
 /* blog display ends */
+
+/* inner loading screen starts */
+#cntloadingscreen{
+    position: relative;
+    margin-top: 13%;
+    scale: 50%;
+}
+/* inner loading screen ends */
