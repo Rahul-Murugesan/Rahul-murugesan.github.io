@@ -23,6 +23,7 @@ async function getdata(url){
 }
 
 // code forces
+if(document.getElementsByTagName('title') == "competitive Programming"){
 (async () => {
     const data = await getdata(urlcf);
     const data2 = await getdata(urlcf_userhandle);
@@ -46,6 +47,7 @@ async function getdata(url){
     document.getElementById("ranklc").innerHTML = data["ranking"],
     document.getElementById("pslc").innerHTML = data["totalSolved"]
 })();
+}
 
 // menu open
 function togglemenu(menu) {
