@@ -8,6 +8,7 @@ window.addEventListener("load", async function(){
 
 	document.getElementById("name").innerHTML = data.title;
 
+	console.log(data.authors);
 	data.authors.forEach(function(item){
 		document.getElementById("auth").innerHTML += `<br>&nbsp&nbsp${item.name}`
 	})
