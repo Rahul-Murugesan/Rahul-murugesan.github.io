@@ -99,6 +99,8 @@ window.onload=function(){
     if(localStorage.getItem("mode") === "dark"){
         const Body = document.body.classList;
         Body.toggle("darkmode");
-        ele.src = "image/mode/lightmode.png";
+        if(document.getElementsByTagName('title') == "Rahul Murugesan"){
+            ele.src = "image/mode/lightmode.png";
+        }
     }
 }
