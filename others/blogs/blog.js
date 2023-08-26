@@ -39,9 +39,7 @@ window.addEventListener("load", async function(){
 
 		var div = document.getElementById("einfo");
 		document.getElementById("name").innerHTML = data.title;
-		console.log(document.getElementById("img").src)
 		if(document.getElementById("img").src == window.location.href){
-			console.log(data.images.jpg.image_url.replace("\\", ""))
 			document.getElementById("img").src = data.images.jpg.image_url.replace("\\", "");
 		}
 
