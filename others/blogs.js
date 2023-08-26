@@ -72,7 +72,7 @@ async function fill(){
         const src = document.getElementById("blogcnt").data.replace(".html", "");
         const name = cnt.getElementById("name").innerText;
         const blogtitle = cnt.getElementById("blogtitle").innerText;
-        const datetime = cnt.getElementById("datetime").innerText;
+        const datetime = cnt.getElementById("updatedatetime").innerText;
         const poster = cnt.getElementById("img").src;
         document.getElementById(`poster${load}`).src = poster
         document.getElementById(`row${load}`).innerHTML += `<div class="info"> <a href=${src}><h3 align="left">${name}: <span>${blogtitle}</span></h3></a> <h6 align="left">${datetime}</h6> </div>`;
