@@ -49,7 +49,7 @@ window.addEventListener("load", async function(){
 		div.innerHTML += `<h6><span>Type:&nbsp${data.type}</span></h6>`;
 		div.innerHTML += `<h6><span>Aired:&nbsp${data.aired.string}</span></h6>`;
 		div.innerHTML += `<h6><span>Status:&nbsp${data.status}</span></h6>`;
-		div.innerHTML += `<h6><span>Episodes:&nbsp${data.episoded}</span></h6>`;
+		div.innerHTML += `<h6><span>Episodes:&nbsp${data.episodes}</span></h6>`;
 		if(data.demographics.length){
 			div.innerHTML += `<h6><span>Demographics:&nbsp${data.demographics[0].name}</span></h6>`;
 		}
