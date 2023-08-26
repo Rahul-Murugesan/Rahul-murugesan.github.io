@@ -31,18 +31,23 @@ function ExpandBtn(ele){
     }
 }
 
+var option = "Recent"
 function filter(ele){
     filteropt = ele.innerText;
+    option = ele.innerText
+    console.log(option)
     ExpandBtn(document.getElementById("filterbtn"))
 }
 
 var load = 1;
 var blog = []
+var totale = 0;
 window.addEventListener("load", async function(){
     const url = "./blogs.json"
     const response = await fetch(url);
     var data = await response.json();
     data = data.all;
+    totale = data.length
     for(var i=0; i<4; i++){
         blog.push(`blogs/${data[i]}.html`);
     }
@@ -50,7 +55,7 @@ window.addEventListener("load", async function(){
 })
 
 async function fill(){
-    if(load <= 4){
+    if(load <= Math.min(totale, 4)){
         cnt = document.getElementById("blogcnt").contentWindow.document;
         while(cnt.getElementById("loaded").innerText == "false"){
             cnt = document.getElementById("blogcnt").contentWindow.document;
@@ -66,7 +71,7 @@ async function fill(){
 
         document.getElementById("blogcnt").data=blog[load];
         load += 1
-        if(load == 5){
+        if(load > totale){
             document.getElementById("blogcnt").data = "";
             for(var i=3; i<document.getElementById("blogdis").childNodes.length; i+=2){
                 document.getElementById("blogdis").childNodes[i].removeAttribute("hidden");
