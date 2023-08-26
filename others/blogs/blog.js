@@ -11,7 +11,7 @@ window.addEventListener("load", async function(){
 		var div = document.getElementById("einfo");
 		document.getElementById("name").innerHTML = data.title;
 		if(document.getElementById("img").src == window.location.href){
-			document.getElementById("img").src = data.images.jpg.image_url.replace("/", "");
+			document.getElementById("img").src = data.images.jpg.image_url.replace("\\", "");
 		}
 
 		data.authors.forEach(function(item){
