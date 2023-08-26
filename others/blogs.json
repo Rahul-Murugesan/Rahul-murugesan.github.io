@@ -1,9 +1,9 @@
 {
 	"manga":["berserk"],
-	"anime":["one_piece", "perfect_blue"],
+	"anime":["monster", "one_piece", "perfect_blue"],
 	"tech":[],
 	"movies":["perfect_blue"],
 	"tvseries":[],
 
-	"all":["monster", "one_piece", "perfect_blue", "berserk"]
+	"all":["one_piece", "monster", "perfect_blue", "berserk"]
 }
