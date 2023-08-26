@@ -1,3 +1,11 @@
+window.addEventListener("load", function(){
+    const Body = document.body.classList;
+    if(Body.contains("darkmode")){
+        document.getElementById("cntloadingscreen").src = "../image/loading-darkmode.gif";
+        document.getElementById("fbtnimg").src = "../image/arrow.png";
+    }
+})
+
 async function addifrm(){
     const url = "./blogs.json"
     const response = await fetch(url);
