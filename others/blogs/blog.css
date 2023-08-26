@@ -47,6 +47,7 @@ a{
 	width: 100%;
 	margin-top: 3%;
 	margin-left: 10%;
+	margin-bottom: 3%;
 }
 .container .bor{
 	border: 1.5px solid gray;;
@@ -59,9 +60,14 @@ a{
 	justify-content: space-between;
 }
 
-#top #datetime{
-	padding-top: 20px;
-	padding-right: 10px;
+#top #creupdt{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+#top #creupdt h6{
+	position: relative;
+	margin: -2%;
 }
 
 #bottom{
