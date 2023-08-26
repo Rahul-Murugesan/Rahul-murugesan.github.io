@@ -5,5 +5,5 @@
 	"movies":["perfect_blue"],
 	"tvseries":[],
 
-	"all":["perfect_blue", "monster", "one_piece", "berserk"]
+	"all":["monster", "one_piece", "perfect_blue", "berserk"]
 }

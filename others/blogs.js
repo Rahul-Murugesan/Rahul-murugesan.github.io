@@ -61,7 +61,7 @@ async function fill(){
             cnt = document.getElementById("blogcnt").contentWindow.document;
             await new Promise(r => setTimeout(r, 0));
         }
-        const src = document.getElementById("blogcnt").data;
+        const src = document.getElementById("blogcnt").data.replace(".html", "");
         const name = cnt.getElementById("name").innerText;
         const blogtitle = cnt.getElementById("blogtitle").innerText;
         const datetime = cnt.getElementById("datetime").innerText;
