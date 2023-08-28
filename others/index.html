@@ -13,14 +13,13 @@
     <script type="text/javascript" src="blogs.js"></script>
     <title>Blogs & Others</title>
 </head>
-<body>
+<body id="body">
     <div id="expandimg">
         <div id="wrapper">
             <img src="" id="expandedimg" onmouseover="ShowClosebtn(true)" onmouseleave="ShowClosebtn(false)">
             <img alt="close" src="../image/close.png" id="closebtn" onclick="CloseBtn(this)" onmouseenter="CloseBtn(this, 1)" onmouseleave="CloseBtn(this, 2)" hidden>
         </div>
     </div>
-    <object id="blogcnt" data="" onload="fill()" style="position: absolute; top: -1000%"></object>
     <div id="loadingscreen">
         <img src="../image/loadingscreen.gif">
         <h1 id="loadingtxt">Loading.&nbsp&nbsp</h1>
@@ -88,25 +87,25 @@
                     <div id="blogdis" class="bor">
                         <img src="../image/loading-lightmode.gif" id="cntloadingscreen">
                         <div class="row" id="row1" hidden>
-                            <img class="poster" id="poster1" onclick="expandimg(this)" src="">
+
                         </div>
                         <div class="bar rowbar1 rowb" hidden>
                         </div>
 
                         <div class="row" id="row2" hidden>
-                            <img class="poster" id="poster2" onclick="expandimg(this)" src="">
+                            
                         </div>
                         <div class="bar rowbar2 rowb" hidden>
                         </div>
 
                         <div class="row" id="row3" hidden>
-                            <img class="poster" id="poster3" onclick="expandimg(this)" src="">
+                            
                         </div>
                         <div class="bar rowbar3 rowb" hidden>
                         </div>
 
                         <div class="row" id="row4" hidden>
-                            <img class="poster" id="poster4" onclick="expandimg(this)" src="">
+                            
                         </div>   
                     </div>
                 </div>
