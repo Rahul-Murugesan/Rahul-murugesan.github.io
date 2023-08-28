@@ -41,33 +41,53 @@ function ExpandBtn(ele){
 
 var load;
 var blog = [];
-var totale = 0;
+var totale;
+var totalpg;
+var curpage = 1;
 var option = "Recent"
 var onsearch = false;
-async function loaddata(){
+var searchkeyword = "";
+var img = "../image/search.png";
+async function loaddata(custom_search = false){
     load = 1;
-    blog = []
+    var data = blog;
     totale = 0;
-
-    const url = "./blogs.json"
-    const response = await fetch(url);
-    var data = await response.json();
-    if(option == "Recent"){
-        data = data.all;
+    if(custom_search && blog.length == 0){
+        for(var i=3; i<document.getElementById("blogdis").childNodes.length; i+=2){
+            document.getElementById("blogdis").childNodes[i].removeAttribute("hidden");
+        }
+        document.getElementById("cntloadingscreen").setAttribute("hidden", "hidden");
+        img =  "../image/search.png";
+        searchkeyword = "";
+        document.getElementById("searchbtn").src = img;
+        return;
     }
-    else if(option == "Anime/Manga"){
-        data = data.animanga;
+    if(custom_search == false){
+        const url = "./blogs.json"
+        const response = await fetch(url);
+        data = await response.json();
+        if(option == "Recent"){
+            data = data.all;
+        }
+        else if(option == "Anime/Manga"){
+            data = data.animanga;
+        }
+        else if(option == "TV Series"){
+            data = data.tvseries;
+        }
+        else if(option == "Movies"){
+            data = data.movies;
+        }
+        else if(option == "Tech"){
+            data = data.tech;
+        }
     }
-    else if(option == "TV Series"){
-        data = data.tvseries;
-    }
-    else if(option == "Movies"){
-        data = data.movies;
-    }
-    else if(option == "Tech"){
-        data = data.tech;
-    }
-    totale = Math.min(data.length, 4)
+    totalpg = Math.ceil(data.length/4);
+    temppg = totalpg.toString()
+    document.getElementById("cpg").value = curpage;
+    document.getElementById("tpg").innerText = '0'.repeat(3-temppg.length)+temppg;
+    totale = Math.min(data.length, 4);
+    blog = [];
     if(totale == 0){
         for(var i=3; i<document.getElementById("blogdis").childNodes.length; i+=2){
             document.getElementById("blogdis").childNodes[i].removeAttribute("hidden");
@@ -79,21 +99,27 @@ async function loaddata(){
             blog.push(`blogs/${data[i]}.html`);
         }
         document.getElementById("body").innerHTML += '<object id="blogcnt" data="" onload="fill()" style="position: absolute; top: -1000%"></object>'
+        document.getElementById("searchprmt").value = searchkeyword;
+        document.getElementById("searchbtn").src = img;
+
         document.getElementById("blogcnt").data=blog[0];
     }
 }
 loaddata();
 
 async function fill(){
+    document.getElementById("searchbtn").src = img;
     if(onsearch){
         return;
     }
     if(load <= totale){
+        document.getElementById("searchbtn").src = img;
         cnt = document.getElementById("blogcnt").contentWindow.document;
         while(cnt.getElementById("loaded").innerText == "false"){
             cnt = document.getElementById("blogcnt").contentWindow.document;
             await new Promise(r => setTimeout(r, 0));
         }
+        
         const src = document.getElementById("blogcnt").data.replace(".html", "");
         const name = cnt.getElementById("name").innerText;
         const blogtitle = cnt.getElementById("blogtitle").innerText;
@@ -103,8 +129,11 @@ async function fill(){
         document.getElementById(`poster${load}`).src = poster;
 
         document.getElementById("blogcnt").data=blog[load];
+        document.getElementById("searchbtn").src = img;
+
         load += 1
         if(load > totale){
+            onsearch = false;
             for(var i=3; i<document.getElementById("blogdis").childNodes.length; i+=2){
                 document.getElementById("blogdis").childNodes[i].removeAttribute("hidden");
             }
@@ -114,6 +143,9 @@ async function fill(){
             const obj = document.getElementById("blogcnt");
             obj.parentNode.removeChild(obj);
             document.getElementById("cntloadingscreen").setAttribute("hidden", "hidden");
+            img =  "../image/search.png";
+            searchkeyword = "";
+            document.getElementById("searchbtn").src = img;
         }
     }
 }
@@ -133,7 +165,6 @@ function filter(ele){
         document.getElementById(`row${i}`).innerHTML = "";
     }
     loaddata();
-    fill();
 }
 
 function expandimg(ele){
@@ -171,20 +202,68 @@ function ShowClosebtn(show){
     }
 }
 
-async function search(event){
+async function search(event=null){
     onsearch = true;
-    if(event.keyCode!=13){
-        return;
+    if(event != null){
+        if(event.keyCode != 13){
+            return;
+        }
     }
-    document.getElementById("searchbtn").src = "../image/cancelsearch.png"
-    
-    document.getElementById("searchbtn").src = "../image/search.png"
+    var keyword = document.getElementById("searchprmt").value;
+    searchkeyword = keyword;
+    keyword = keyword.toLowerCase();
+    if(keyword != ""){
+        document.getElementById("searchbtn").src = "../image/cancelsearch.png";
+        img = "../image/cancelsearch.png";
+
+        const url = "./blogs.json"
+        const response = await fetch(url);
+        var data = await response.json();
+        if(option == "Recent"){
+            data = data.all;
+        }
+        else if(option == "Anime/Manga"){
+            data = data.animanga;
+        }
+        else if(option == "TV Series"){
+            data = data.tvseries;
+        }
+        else if(option == "Movies"){
+            data = data.movies;
+        }
+        else if(option == "Tech"){
+            data = data.tech;
+        }
+        blog = []
+        for(d in data){
+            if(data[d].toLowerCase().includes(keyword)){
+                blog.push(data[d]);
+            }
+        }
+        document.getElementById("cntloadingscreen").removeAttribute("hidden");
+        for(var i=3; i<document.getElementById("blogdis").childNodes.length; i+=2){
+            document.getElementById("blogdis").childNodes[i].setAttribute("hidden", "hidden");
+        }
+        for(var i=3; i<document.getElementById("blogdis").childNodes.length; i+=4){
+            document.getElementById("blogdis").childNodes[i].style.display = "none";
+        }
+        for(var i=1; i<=4; i++){
+            document.getElementById(`row${i}`).innerHTML = "";
+        }
+        loaddata(true);
+    }
+    else{
+        document.getElementById("searchbtn").src = "../image/cancelsearch.png";
+        loaddata();
+    }
 }
 
 async function changepage(ele, event=null){
     var pageno;
-    if(event.keyCode == 13){
-        pageno = ele.value;
+    if(event != null){
+        if(event.keyCode == 13){
+            pageno = ele.value;
+        }
     }
     else{
         pageno = document.getElementById("cpg").value;
@@ -192,5 +271,4 @@ async function changepage(ele, event=null){
         await new Promise(r => setTimeout(r, 100));
         ele.style.scale = "100%";
     }
-
 }
