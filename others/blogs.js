@@ -84,8 +84,9 @@ async function loaddata(custom_search = false){
     }
     totalpg = Math.ceil(data.length/4);
     temppg = totalpg.toString()
-    document.getElementById("cpg").value = curpage;
     document.getElementById("tpg").innerText = "/"+'0'.repeat(3-temppg.length)+temppg;
+    temppg = curpage.toString();
+    document.getElementById("cpg").value = '0'.repeat(3-temppg.length)+temppg;
     totale = Math.min(data.length, 4);
     blog = [];
     if(totale == 0){
@@ -101,6 +102,8 @@ async function loaddata(custom_search = false){
         document.getElementById("body").innerHTML += '<object id="blogcnt" data="" onload="fill()" style="position: absolute; top: -1000%"></object>'
         document.getElementById("searchprmt").value = searchkeyword;
         document.getElementById("searchbtn").src = img;
+        temppg = curpage.toString();
+        document.getElementById("cpg").value = '0'.repeat(3-temppg.length)+temppg;
 
         document.getElementById("blogcnt").data=blog[0];
     }
@@ -264,11 +267,39 @@ async function changepage(ele, event=null){
         if(event.keyCode == 13){
             pageno = ele.value;
         }
+        else{
+            return;
+        }
     }
     else{
         pageno = document.getElementById("cpg").value;
+        if(ele.id == "nxt"){
+            pageno++;
+        }
+        else{
+            pageno--;
+        }
         ele.style.scale = "90%";
         await new Promise(r => setTimeout(r, 100));
         ele.style.scale = "100%";
+    }
+    console.log(Number(pageno));
+    if(totalpg < pageno || 0 >= pageno || pageno == ""){
+        temppg = curpage.toString();
+    }
+    else{
+        curpage = Number(pageno);
+        temppg = pageno.toString();
+    }
+    document.getElementById("cpg").value = '0'.repeat(3-temppg.length)+temppg;
+}
+
+function cleartxtbox(ele, clear){
+    if(clear){
+        ele.value = "";
+    }
+    else{
+        temppg = curpage.toString();
+        ele.value = '0'.repeat(3-temppg.length)+temppg;
     }
 }

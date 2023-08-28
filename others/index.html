@@ -77,7 +77,7 @@
                         <input type="text" placeholder="search" id="searchprmt" onkeypress="search(event)">
                         <img id="searchbtn" onclick="search()" src="../image/search.png">
                         <img id="prv" src="../image/nxtprev.png" onclick="changepage(this)">
-                        <input type="text" id="cpg" onkeypress="changepage(this, event)">
+                        <input type="text" id="cpg" onfocusin="cleartxtbox(this, true)" onfocusout="cleartxtbox(this, false)" onkeypress="changepage(this, event)">
                         <label id="tpg" style="font-size: 0.8rem;">/</label>
                         <img id="nxt" src="../image/nxtprev.png" onclick="changepage(this)">
                     </div>
