@@ -85,7 +85,7 @@ async function loaddata(custom_search = false){
     totalpg = Math.ceil(data.length/4);
     temppg = totalpg.toString()
     document.getElementById("cpg").value = curpage;
-    document.getElementById("tpg").innerText = '0'.repeat(3-temppg.length)+temppg;
+    document.getElementById("tpg").innerText = "/"+'0'.repeat(3-temppg.length)+temppg;
     totale = Math.min(data.length, 4);
     blog = [];
     if(totale == 0){
