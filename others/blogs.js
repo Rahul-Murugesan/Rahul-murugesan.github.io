@@ -43,6 +43,7 @@ var load;
 var blog = [];
 var totale = 0;
 var option = "Recent"
+var onsearch = false;
 async function loaddata(){
     load = 1;
     blog = []
@@ -84,6 +85,9 @@ async function loaddata(){
 loaddata();
 
 async function fill(){
+    if(onsearch){
+        return;
+    }
     if(load <= totale){
         cnt = document.getElementById("blogcnt").contentWindow.document;
         while(cnt.getElementById("loaded").innerText == "false"){
@@ -101,7 +105,6 @@ async function fill(){
         document.getElementById("blogcnt").data=blog[load];
         load += 1
         if(load > totale){
-            console.log(document.getElementById("blogdis").childNodes)
             for(var i=3; i<document.getElementById("blogdis").childNodes.length; i+=2){
                 document.getElementById("blogdis").childNodes[i].removeAttribute("hidden");
             }
@@ -166,4 +169,28 @@ function ShowClosebtn(show){
     else{
         document.getElementById("closebtn").setAttribute("hidden", "hidden");
     }
+}
+
+async function search(event){
+    onsearch = true;
+    if(event.keyCode!=13){
+        return;
+    }
+    document.getElementById("searchbtn").src = "../image/cancelsearch.png"
+    
+    document.getElementById("searchbtn").src = "../image/search.png"
+}
+
+async function changepage(ele, event=null){
+    var pageno;
+    if(event.keyCode == 13){
+        pageno = ele.value;
+    }
+    else{
+        pageno = document.getElementById("cpg").value;
+        ele.style.scale = "90%";
+        await new Promise(r => setTimeout(r, 100));
+        ele.style.scale = "100%";
+    }
+
 }

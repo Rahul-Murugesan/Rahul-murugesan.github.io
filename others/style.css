@@ -101,14 +101,21 @@ h4{
 
 /* filter starts */
 #filter{
+    height: 50px;
+    margin-left: 10px;
+    margin-bottom: 40px;
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 #filterbtn{
     position: relative;
-    top: -11px;
     right: 20px;
     scale: 25%;
+}
+
+#filteropt{
+    margin: 0 0 0 0;
 }
 
 #expand{
@@ -125,6 +132,33 @@ h4{
 }
 #expand ul li:hover{
     color: orange;
+}
+
+#filter #searchprmt{
+    height: 27px; 
+    width: 150px; 
+    margin-left: -30px;
+}
+
+#searchbtn{
+    height: 27px;
+    margin-left: 5px;
+}
+#prv{
+    height: 27px;
+    margin-left: 50px;
+}
+#nxt{
+    transform: rotate(180deg);
+    height: 27px;
+    margin-left: 3px;
+}
+#cpg{
+    color: white;
+    background-color: black;
+    width: 30px;
+    margin-left: 3px;
+    margin-right: 1px;
 }
 /* filter ends */
 

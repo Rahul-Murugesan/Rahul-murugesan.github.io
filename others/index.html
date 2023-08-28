@@ -74,6 +74,12 @@
                             Recent
                         </h4>
                         <button id="filterbtn" onclick="ExpandBtn(this)"><img id="fbtnimg" src="../image/arrow-lightmode.png"></button>
+                        <input type="text" placeholder="search" id="searchprmt" onkeypress="search(event)">
+                        <img id="searchbtn" onclick="search()" src="../image/search.png">
+                        <img id="prv" src="../image/nxtprev.png" onclick="changepage(this)">
+                        <input type="text" id="cpg" onkeypress="changepage(this, event)">
+                        <label id="tpg" style="font-size: 0.8rem;">/000</label>
+                        <img id="nxt" src="../image/nxtprev.png" onclick="changepage(this)">
                     </div>
                     <div id="expand">
                         <ul align="left">
