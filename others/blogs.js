@@ -54,7 +54,7 @@ async function loaddata(){
     if(option == "Recent"){
         data = data.all;
     }
-    else if(option == "Aniem/Manga"){
+    else if(option == "Anime/Manga"){
         data = data.animanga;
     }
     else if(option == "TV Series"){
