@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link href="../style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" href="../image/logo.png" type="image/icon type">
+    <script src="../index.js"></script>
+    <title>Blogs & Others</title>
+</head>
+<body id="body">
+    <section id="navigation">
+        <a href="/"><img src="../image/logo.png" class="logo"></a>
+        <div class="mobiletools">
+            <div id="hamburger" onclick="togglemenu(this)">
+                <div id="bar" class="bar1"></div>
+                <div id="bar" class="bar2"></div>
+                <div id="bar" class="bar3"></div>
+                <ul class="menu">
+                    <li><a href="../">Home</a></li>
+                    <li><a href="../services">Services</a></li>
+                    <li><a href="../competitiveprogramming">Competitive Programming</a></li>
+                    <li><a href="../projects">Projects</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tools">
+            <nav class="links">
+                <ul>
+                    <li><a href="../">Home</a></li>
+                    <li><a href="../services">Services</a></li>
+                    <li><a href="../competitiveprogramming">Competitive Programming</a></li>
+                    <li><a href="../projects">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <div id="errordis">
+        <div id="wrapper">
+            <img src="image/404.png">
+            <div id="info">
+                <h1>404</h1>
+                <h5>Page not Found</h5><br>
+                <p>Probably you got lost!</p>
+            </div>
+        </div>
+    </div>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        #errordis{
+            display: flex;
+            justify-content: center;
+        }
+        #errordis #wrapper{
+            position: relative;
+            height: 500px;
+            width: auto;
+            margin-left: -20%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        #errordis #wrapper #info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: -10%;
+        }
+        #errordis #wrapper img{
+            scale: 70%;
+        }
+    </style>
+</body>
+</html>
