@@ -50,7 +50,40 @@ function togglemode(ele){
     Body.toggle("darkmode");
 }
 
+
+// write access log
+async function write_access_log(){
+    // get public ip
+    publicip = null;
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json(); 
+        publicip = data.ip;
+    } 
+    catch (error) {
+    }
+    
+    // time and url
+    const url = window.location.href;
+    const time = new Date().toString().replace(' GMT+0530 (India Standard Time)','');
+
+    const log = {"Access log":[time, url, publicip]};
+    
+    const linux_server_api = "https://linux-server-api-default-rtdb.firebaseio.com/log.json";
+    // Make a POST request using fetch
+    fetch(linux_server_api, {
+        method: 'POST', // Specify the HTTP method (POST, GET, PUT, DELETE, etc.)
+        headers: {
+          'Content-Type': 'application/json', // Content type header for JSON data
+        },
+        body: JSON.stringify(log) // Convert the data to a JSON string
+      })
+}
+
+// when window loads
 window.onload=function(){
+
+    // enable dark/light mode from user setting
     ele = document.getElementById("modeicon");
     if(localStorage.getItem("mode") === "dark"){
         const Body = document.body.classList;
@@ -62,4 +95,6 @@ window.onload=function(){
     clearInterval(loadingscreen);
     var lscr = document.getElementById("loadingscreen");
     lscr.parentNode.removeChild(lscr);
+
+    write_access_log();
 }
