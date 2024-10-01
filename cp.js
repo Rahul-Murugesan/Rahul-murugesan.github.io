@@ -5,6 +5,7 @@ let urllc = "https://leetcode-stats-api.herokuapp.com/Finalgof";
 let urllc_rating = "https://leetcode.com/graphql?query=query%20{%20userContestRanking(username:%20%20%22Finalgof%22)%20{rating}}"
 let urlcc;
 
+// get data from json
 async function getdata(url){
     const res = await fetch(url);
     const data = await res.json();

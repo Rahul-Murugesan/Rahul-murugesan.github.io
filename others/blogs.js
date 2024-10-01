@@ -283,7 +283,6 @@ async function changepage(ele, event=null){
         await new Promise(r => setTimeout(r, 100));
         ele.style.scale = "100%";
     }
-    console.log(Number(pageno));
     if(totalpg < pageno || 0 >= pageno || pageno == ""){
         temppg = curpage.toString();
     }

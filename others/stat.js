@@ -11,7 +11,6 @@ async function updatemovie(){
         var url = data["Recent Movies"][movie_name[i]][0];
         var name = movie_name[i];
         var star = data["Recent Movies"][movie_name[i]][1];
-        console.log(url, name, star)
         document.getElementById("rmdata").innerHTML += "<li><a href="+url+">"+name+"</a> - "+star+"</li>"
     }
 
@@ -19,7 +18,6 @@ async function updatemovie(){
     for(var i=0; i<5; i++){
         var url = data["Watchlist"][movie_name[i]][0];
         var name = movie_name[i];
-        console.log(url, name, star)
         document.getElementById("wldata").innerHTML += "<li><a href="+url+">"+name+"</a></li>"
     }
 }

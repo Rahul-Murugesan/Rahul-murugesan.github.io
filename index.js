@@ -79,10 +79,10 @@ function getOS(){
         osName = "Windows";
     } else if (userAgent.indexOf("Mac") > -1) {
         osName = "MacOS";
-    } else if (userAgent.indexOf("X11") > -1 || userAgent.indexOf("Linux") > -1) {
-        osName = "Linux";
     } else if (userAgent.indexOf("Android") > -1) {
         osName = "Android";
+    } else if (userAgent.indexOf("X11") > -1 || userAgent.indexOf("Linux") > -1) {
+        osName = "Linux";
     } else if (userAgent.indexOf("like Mac") > -1) {
         osName = "iOS";
     } else {
@@ -110,22 +110,6 @@ async function write_access_log(){
 
     const userAgent = navigator.userAgent;
     let browserName, osName;
-
-    // Detect OS name
-    if (userAgent.indexOf("Win") > -1) {
-        osName = "Windows";
-    } else if (userAgent.indexOf("Mac") > -1) {
-        osName = "MacOS";
-    } else if (userAgent.indexOf("X11") > -1 || userAgent.indexOf("Linux") > -1) {
-        osName = "Linux";
-    } else if (userAgent.indexOf("Android") > -1) {
-        osName = "Android";
-    } else if (userAgent.indexOf("like Mac") > -1) {
-        osName = "iOS";
-    } else {
-        osName = "Unknown";
-    }
-
     const log = ["Access log", publicip, time, url, getBrowser(), getOS()];
     
     const linux_server_api = "https://linux-server-api-default-rtdb.firebaseio.com/log.json";
