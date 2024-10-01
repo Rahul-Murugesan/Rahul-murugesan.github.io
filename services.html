@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="index.js"></script>
+    <script src="services.js"></script>
     <link href="style.css" rel="stylesheet">
+    <link href="services.css" rel="stylesheet">
     <link href="mobile.css" rel="stylesheet" media="screen and (min-width: 320px) and (max-width: 430px)">
     <link rel="icon" href="image/logo.png" type="image/icon type">
     <title>Projects</title>
@@ -41,7 +43,23 @@
             </nav>
         </div>
     </section>
-    <section id="projects">
+    <div id="login">
+        <div class="loginform">
+          <form id ="registerform" class="register-form" hidden>
+            <input type="text" placeholder="email"/>
+            <input type="password" placeholder="password"/>
+            <button onclick="register()">Register</button>
+            <p class="message">Already registered? <span onclick="changeform(this)">Sign In</span></p>
+          </form>
+          <form id="loginform" class="login-form">
+            <input type="text" placeholder="email"/>
+            <input type="password" placeholder="password"/>
+            <button onclick="login()">login</button>
+            <p class="message">Not registered? <span onclick="changeform(this)">Create an account</span></p>
+          </form>
+        </div>
+    </div>
+    <section id="services" hidden>
         <div class="container">
             <div class="project-top">
                 <h1>Serv<span class="tspan">ices</span></h1>
