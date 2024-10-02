@@ -19,10 +19,20 @@
   background: #f2f2f2;
   width: 100%;
   border: 0;
-  margin: 0 0 15px;
+  margin: 0 0 0px;
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+}
+.loginform label {
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  text-align: left;
+  margin-left: 10px;
+  min-height: 20px;
+  color: red;
+  font-size: 13px;
+
 }
 .loginform button {
     display: inline-block;

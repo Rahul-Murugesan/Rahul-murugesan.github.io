@@ -45,18 +45,23 @@
     </section>
     <div id="login">
         <div class="loginform">
-          <form id ="registerform" class="register-form" hidden>
-            <input type="text" placeholder="email"/>
-            <input type="password" placeholder="password"/>
-            <button onclick="register()">Register</button>
-            <p class="message">Already registered? <span onclick="changeform(this)">Sign In</span></p>
-          </form>
-          <form id="loginform" class="login-form">
-            <input type="text" placeholder="email"/>
-            <input type="password" placeholder="password"/>
-            <button onclick="login()">login</button>
-            <p class="message">Not registered? <span onclick="changeform(this)">Create an account</span></p>
-          </form>
+            <form id="loginform" class="login-form">
+                <input id="loginemail" type="text" placeholder="email"/>
+                <label class="error" id="loginemailerror"></label>
+                <input id="loginpassword" type="password" placeholder="password"/>
+                <label class="error" id="loginepassworderror"></label>
+                <button type="button" id="loginbutton" onclick="login()">login</button>
+                <p class="message">Not registered? <span onclick="changeform()">Create an account</span></p>
+            </form>
+
+            <form id ="registerform" class="register-form" hidden>
+                <input id="registeremail" type="text" placeholder="email"/>
+                <label class="error" id="registeremailerror"></label>
+                <input id="registerpassword" type="password" placeholder="password"/>
+                <label class="error" id="registerpassworderror"></label>
+                <button type="button" id="registerbutton" onclick="register()">Register</button>
+                <p class="message">Already registered? <span onclick="changeform()">Sign In</span></p>
+            </form>
         </div>
     </div>
     <section id="services" hidden>
@@ -67,5 +72,6 @@
             </div>
         </div>
     </section>
+    </script>
 </body>
 </html>
