@@ -112,14 +112,14 @@ async function write_access_log(){
     let browserName, osName;
     const log = ["Access log", publicip, time, url, getBrowser(), getOS()];
     
+    // POST logs to api
     const linux_server_api = "https://linux-server-api-default-rtdb.firebaseio.com/log.json";
-    // Make a POST request using fetch
     fetch(linux_server_api, {
-        method: 'POST', // Specify the HTTP method (POST, GET, PUT, DELETE, etc.)
+        method: 'POST',
         headers: {
-          'Content-Type': 'application/json', // Content type header for JSON data
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(log) // Convert the data to a JSON string
+        body: JSON.stringify(log)
       })
 }
 
