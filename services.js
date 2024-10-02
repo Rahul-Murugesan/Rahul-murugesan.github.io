@@ -67,3 +67,22 @@ async function register() {
         body: JSON.stringify(request)
     })
 }
+
+setInterval( async () => {
+    const response = await fetch(linux_server_api+'server_status.json');
+    const server_status = JSON.parse(await response.text()).last_active * 1000;
+
+    const timeDifference = (Date.now() - server_status);
+    if (timeDifference < 0) {
+        console.log("Server is currently Active");
+    } else {
+        const seconds = Math.floor(timeDifference / 1000);
+
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const remainingSeconds = seconds % 60;
+
+        console.log(`Server was active ${hours}:${minutes}:${remainingSeconds} ago`);
+    }
+
+}, 1000);
