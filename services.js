@@ -30,8 +30,8 @@ function login() {
 }
 
 function register() {
-    const email = document.getElementById("loginemail").value;
-    const password = document.getElementById("loginpassword").value;
+    const email = document.getElementById("registeremail").value;
+    const password = document.getElementById("registerpassword").value;
     const request = {"register":[email, password]}
 
     fetch(linux_server_api+"user_request.json", {
