@@ -1,4 +1,4 @@
-function changeform(toggle) {
+function changeform() {
     const registerForm = document.getElementById('registerform');
     const loginForm = document.getElementById('loginform');
     if (registerForm.hidden === true) {
@@ -14,12 +14,31 @@ function changeform(toggle) {
     }
 }
 
+var linux_server_api = "https://linux-server-api-default-rtdb.firebaseio.com/";
 function login() {
-    console.log("login");
-    event.preventDefault();
+    const email = document.getElementById("loginemail").value;
+    const password = document.getElementById("loginpassword").value;
+    const request = {"login":[email, password]}
+
+    fetch(linux_server_api+"user_request.json", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    })
 }
 
 function register() {
-    console.log("register");
-    event.preventDefault();
+    const email = document.getElementById("loginemail").value;
+    const password = document.getElementById("loginpassword").value;
+    const request = {"register":[email, password]}
+
+    fetch(linux_server_api+"user_request.json", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    })
 }
