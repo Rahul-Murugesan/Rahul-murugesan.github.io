@@ -102,14 +102,12 @@ async function write_access_log(){
         publicip = data.ip;
     } 
     catch (error) {
+
     }
     
     // time and url
     const url = window.location.href;
     const time = new Date().toString().replace(' GMT+0530 (India Standard Time)','');
-
-    const userAgent = navigator.userAgent;
-    let browserName, osName;
     const log = ["Access log", publicip, time, url, getBrowser(), getOS()];
     
     // POST logs to api
