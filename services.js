@@ -14,6 +14,35 @@ function changeform() {
     }
 }
 
+// write login, register log
+async function write_login_register_log(logtype, username){
+    // get public ip
+    publicip = null;
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json(); 
+        publicip = data.ip;
+    } 
+    catch (error) {
+
+    }
+    
+    // time and url
+    const url = window.location.href;
+    const time = new Date().toString().replace(' GMT+0530 (India Standard Time)','');
+    const log = [logtype, publicip, time, username, getBrowser(), getOS()];
+    
+    // POST logs to api
+    const linux_server_api = "https://linux-server-api-default-rtdb.firebaseio.com/log.json";
+    fetch(linux_server_api, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(log)
+      })
+}
+
 async function encrypt(cred) {
     const response = await fetch('public_key.pem');
     if (!response.ok) {
@@ -35,12 +64,12 @@ function generateSessionId() {
 
 var linux_server_api = "https://linux-server-api-default-rtdb.firebaseio.com/";
 async function login() {
-    const username = await encrypt(document.getElementById("loginusername").value);
-    const password = await encrypt(document.getElementById("loginpassword").value);
-    n = generateSessionId();
-    console.log(n)
-    const sessionid = await encrypt(n);
-    const request = {"login":[username, password, sessionid]}
+    const username = document.getElementById("loginusername").value
+    const encrypted_username = await encrypt(username);
+    const encrypted_password = await encrypt(document.getElementById("loginpassword").value);
+    const session_id = generateSessionId();
+    const encrypted_session_id = await encrypt(session_id);
+    const request = {"login":[encrypted_username, encrypted_password, encrypted_session_id]}
 
     fetch(linux_server_api+"user_request.json", {
         method: 'POST',
@@ -52,12 +81,17 @@ async function login() {
     .then(data => {
         reqid = data.name;
     })
+
+    write_login_register_log("User Login", username);
 }
 
 async function register() {
-    const username = await encrypt(document.getElementById("registerusername").value);
-    const password = await encrypt(document.getElementById("registerpassword").value);
-    const request = {"register":[username, password]}
+    const username = document.getElementById("registerusername").value;
+    const encrypted_username = await encrypt(username);
+    const encrypted_password = await encrypt(document.getElementById("registerpassword").value);
+    const session_id = generateSessionId();
+    const encrypted_session_id = await encrypt(session_id);
+    const request = {"register":[encrypted_username, encrypted_password, encrypted_session_id]}
 
     fetch(linux_server_api+"user_request.json", {
         method: 'POST',
@@ -66,6 +100,8 @@ async function register() {
         },
         body: JSON.stringify(request)
     })
+
+    write_login_register_log("User Register", username)
 }
 
 setInterval( async () => {
