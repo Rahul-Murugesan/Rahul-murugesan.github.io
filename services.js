@@ -73,16 +73,31 @@ setInterval( async () => {
     const server_status = JSON.parse(await response.text()).last_active * 1000;
 
     const timeDifference = (Date.now() - server_status);
-    if (timeDifference < 0) {
-        console.log("Server is currently Active");
-    } else {
-        const seconds = Math.floor(timeDifference / 1000);
-
+    if (timeDifference > 0) {
+        
+        let seconds = Math.floor(timeDifference / 1000);
         const hours = Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const remainingSeconds = seconds % 60;
+        seconds %= 3600;
+        const minutes = Math.floor(seconds / 60);
+        seconds %= 60;
 
-        console.log(`Server was active ${hours}:${minutes}:${remainingSeconds} ago`);
+        let result = '';
+
+        if (hours > 0) {
+            result += `${hours} hr${hours > 1 ? 's' : ''} `;
+        }
+        if (minutes > 0) {
+            result += `${minutes} min${minutes > 1 ? 's' : ''} `;
+        }
+        if (seconds > 0 || result === '') {
+            result += `${seconds} sec${seconds > 1 ? 's' : ''} `;
+        }
+
+        document.getElementById("cursts").innerText = "🔴";
+        document.getElementById("lastactive").innerText = `Last Active: ${result.trim()} ago`;
+    } else {
+        document.getElementById("cursts").innerText = "🟢";
+        document.getElementById("lastactive").innerText = "";
     }
 
 }, 1000);
