@@ -20,7 +20,7 @@
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
-  border: 2px solid orange;
+  border: 2px solid #ffa500;
 }
 .loginform input {
   font-family: 'Montserrat', sans-serif;
