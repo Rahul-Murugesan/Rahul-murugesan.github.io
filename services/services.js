@@ -235,7 +235,6 @@ setInterval( async () => {
     const server_status = JSON.parse(await response.text()).last_active * 1000;
 
     const timeDifference = (Date.now() - server_status);
-    console.log(timeDifference);
     if (timeDifference >= 10000) {
         
         let seconds = Math.floor(timeDifference / 1000);
@@ -268,3 +267,49 @@ setInterval( async () => {
     }
 
 }, 1000);
+
+// check server response for verifying existing session
+async function check_activate_session_response() {
+    const server_response = await fetch(linux_server_api+`server_response/${reqid}.json`);
+    const response = JSON.parse(await server_response.text())
+    if(response === 1) {
+        activate_session();
+        document.getElementById("login").hidden = true;
+        document.getElementById("services").hidden = false;
+    }
+    return response;
+}
+
+// activate existing session
+window.addEventListener('load', async function() {
+    const sessionid = get_session_id();
+    if(sessionid === null)  {
+        return 0;
+    }
+    const request = {"activate_session":await encrypt(sessionid)}
+
+    fetch(linux_server_api+"user_request.json", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    }).then(response => response.json())
+    .then(data => {
+        reqid = data.name;
+    })
+
+    // check for server response
+    var count = 0;
+    let interval = setInterval(async function () {
+        count += 1;
+        if(count === 31) {
+            clearInterval(interval);
+        }
+
+        const response = await check_activate_session_response();
+        if(response !== null) {
+            clearInterval(interval);
+        }     
+    }, 1000);
+});
