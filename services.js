@@ -235,7 +235,8 @@ setInterval( async () => {
     const server_status = JSON.parse(await response.text()).last_active * 1000;
 
     const timeDifference = (Date.now() - server_status);
-    if (timeDifference > 0) {
+    console.log(timeDifference);
+    if (timeDifference >= 10000) {
         
         let seconds = Math.floor(timeDifference / 1000);
         const hours = Math.floor(seconds / 3600);
