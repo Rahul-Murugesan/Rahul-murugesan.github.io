@@ -196,7 +196,7 @@ img{
 /* image ends */
 
 /* service top starts */
-#services .service-top h1{
+#services .services-top h1{
     font-size: 3rem;
     font-weight: 300;
     margin-bottom: 10px;
@@ -204,7 +204,7 @@ img{
     letter-spacing: 0.1rem;
     text-align: center;
 }
-#services .service-top p{
+#services .services-top p{
     font-weight: 300;
     margin-top: 5px;
     line-height: 2.5rem;
