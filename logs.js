@@ -67,3 +67,5 @@ async function write_access_log(){
         body: JSON.stringify(log)
       })
 }
+
+write_access_log()
