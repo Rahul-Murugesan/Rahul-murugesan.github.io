@@ -1,73 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K81QMVX8PX"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-K81QMVX8PX');
-    </script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="index.js"></script>
-    <script src="serverapi.js"></script>
-    <link href="style.css" rel="stylesheet">
-    <link href="mobile.css" rel="stylesheet" media="screen and (min-width: 320px) and (max-width: 430px)">
-    <link rel="icon" href="image/logo.png" type="image/icon type">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rahul Murugesan</title>
-</head>
-<body>
-    <div id="loadingscreen">
-        <img src="image/loadingscreen.gif">
-        <h1 id="loadingtxt">Loading.&nbsp&nbsp</h1>
-    </div>
-    <section id="navigation">
-        <a href="/"><img src="image/logo.png" class="logo" ondragstart="return false"></a>
-        <div class="mobiletools">
-            <div class="mode" ondragstart="return false" >
-                <img src="image/mode/darkmode.png" onclick="togglemode(this)" onmouseenter="modehover(this)" onmouseleave="modenothover(this)" class="modeimg">
-            </div>
-            <div id="hamburger" onclick="togglemenu(this)">
-                <div id="bar" class="bar1"></div>
-                <div id="bar" class="bar2"></div>
-                <div id="bar" class="bar3"></div>
-                <ul class="menu">
-                    <li><a href="services">Services</a></li>
-                    <li><a href="competitiveprogramming">Competitive Programming</a></li>
-                    <li><a href="projects">Projects</a></li>
-                    <li><a href="others">Blogs & Others</a></li>
-                </ul>
-            </div>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <script src="script.js"></script>
+    <script src="serverapi.js"></script>
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Rahul Murugesan</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Rahul Murugesan</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <div class="tools">
-            <nav class="links">
-                <ul>
-                    <li><a href="services">Services</a></li>
-                    <li><a href="competitiveprogramming">Competitive Programming</a></li>
-                    <li><a href="projects">Projects</a></li>
-                    <li><a href="others">Blogs & Others</a></li>
-                </ul>
-            </nav>
-            <div class="mode" ondragstart="return false" >
-                <img src="image/mode/darkmode.png" id="modeicon" onclick="togglemode(this)" onmouseenter="modehover(this)" onmouseleave="modenothover(this)" class="modeimg">
-            </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
         </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./image/profilepic1.jpg" alt="John Doe profile picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Rahul Murugesan</h1>
+        <p class="section__text__p2">AI Developer</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-1"
+            onclick="window.open('./resume/Resume.pdf')"
+          >
+            Download CV
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact Info
+          </button>
+        </div>
+        <div id="socials-container">
+          <img
+            src="./image/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://www.linkedin.com/in/rahul-murugesan/'"
+          />
+          <img
+            src="./image/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/RahulM-3'"
+          />
+        </div>
+      </div>
     </section>
-    <section id="root">
-        <div class="container">
-            <div id="name">
-                <h1>Hello, I'm Rahul M <span></span></h1>
-                <a href="resume/Resume.pdf" type="button" id="cvd">Download CV</a>
-            </div>
-            <div id="image" ondragstart="return false">
-                <img src="image/shape.png" id="shape">
-                <img src="image/luffy.png" id="luffy">
-            </div>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./image/profilepic2.jpg"
+            alt="Profile picture"
+            class="about-pic"
+          />
         </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./image/education.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Under-Graduation </h3>
+              <p>
+                B.Sc. Artificial Intelligence and Machine Learning
+              </p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./image/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Post-Graduation</h3>
+              <p>M.Sc. Artificial Intelligence</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              I'm Rahul Murugesan, currently pursuing an M.Sc. in Artificial 
+              Intelligence at Bharathiar University. I have a strong passion for 
+              developing AI models that solve a variety of real-world challenges. I 
+              enjoy pushing my boundaries by setting ambitious goals and taking 
+              pride in achieving them. In addition to my academic pursuits, I engage 
+              in competitive programming and enjoy playing video games as a way 
+              to sharpen my problem-solving skills.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./image/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
     </section>
-</body>
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Artificial Intelligence</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./image/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Machine Learning</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./image/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Deep Learning</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./image/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Natural Language Processing</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./image/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Computer vision</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Web Development</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./image/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>HTML</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./image/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>CSS</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./image/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Client side Java Script</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./image/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Python - Django</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./image/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#projects'"
+      />
+    </section>
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./image/project/culinary.jpg"
+                alt="culinary"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Culinary-Companion</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-1 project-btn"
+                onclick="location.href='https://github.com/RahulM-3/Culinary-Companion'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-1 project-btn"
+                onclick="location.href=''"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./image/project/objecttracking.jpg"
+                alt="potato farm"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Potato Leaf Disease Prediction</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-1 project-btn"
+                onclick="location.href='https://github.com/RahulM-3/Potato-Leaf-Disease-Prediction'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-1 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./image/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./image/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="https://mail.google.com/mail/u/0/?fs=1&to=rahulcode97@gmail.com&tf=cm">
+            rahulcode97@gmail.com
+          </a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./image/linkedin.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href="https://www.linkedin.com/in/rahul-murugesan/">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2024 Rahul Murugesan. All Rights Reserved.</p>
+    </footer>
+  </body>
 </html>

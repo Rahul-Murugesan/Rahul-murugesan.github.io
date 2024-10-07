@@ -1,4 +1,3 @@
-
 // Detect browser name
 function getBrowser() {
     const userAgent = navigator.userAgent;
