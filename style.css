@@ -56,6 +56,7 @@ a:hover {
   text-decoration: underline;
   text-underline-offset: 1rem;
   text-decoration-color: rgb(181, 181, 181);
+  cursor: pointer;
 }
 
 .logo {
@@ -250,11 +251,12 @@ section {
 
 .btn-container {
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* ABOUT SECTION */
 
-#about {
+#about{
   position: relative;
 }
 
