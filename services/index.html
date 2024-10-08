@@ -5,46 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Services</title>
+    <link rel="icon" type="image/x-icon" href="../image/services-favicon.png">
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../mediaqueries.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="../script.js"></script>
     <script src="../logs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.10.0/forge.min.js"></script>
     <script src="services.js"></script>
   </head>
   <body>
     <nav id="desktop-nav">
-      <a href="/" class="logo">Home</a>
       <div>
-        <ul class="nav-links">
-          <li><a href="../#about">About</a></li>
-          <li><a href="../#experience">Experience</a></li>
-          <li><a href="../#projects">Projects</a></li>
-          <li><a href="../#contact">Contact</a></li>
+        <ul class="nav-links" id="navbar">
+          <li class="serverstatus">Server Status: <span id="cursts"></span><br><span id="lastactive"></span></li>
         </ul>
-      </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <a href="/" class="logo">Home</a>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="../#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="../#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="../#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="../#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
       </div>
     </nav>
     <section id="login">
       <div class="login-details-container">
         <div class="login-container">
-          <h3 class="serverstatus">Server Status: <span id="cursts"></span><br>
-          <span id="lastactive"></span></h3>
           <div class="form-container">
             <form id="loginform">
               <input id="loginusername" type="text" placeholder="username"/>
@@ -52,7 +33,7 @@
               <input id="loginpassword" type="password" placeholder="password"/>
               <label id="loginepassworderror"></label>
               <div class="btn-container">
-                <button type="button" class="btn btn-color-1" onclick="login()">Login</button>
+                <button type="button" id="loginbutton" class="btn btn-color-1" onclick="login()">Login</button>
               </div>
               <p>Not registered? <a onclick="changeform()">Create an account</a></p>
             </form>
@@ -60,15 +41,18 @@
               <input id="registerusername" type="text" placeholder="username"/>
               <label id="registerusernameerror"></label>
               <input id="registerpassword" type="password" placeholder="password"/>
-              <label id="registerepassworderror"></label>
+              <label id="registerpassworderror"></label>
               <div class="btn-container">
-                <button type="button" class="btn btn-color-1" onclick="register()">Register</button>
+                <button type="button" id="registerbutton" class="btn btn-color-1" onclick="register()">Register</button>
               </div>
               <p>Already registered? <a onclick="changeform()">Login</a></p>
             </form>
           </div>
         </div>
       </div>
+    </section>
+    <section id="services" hidden>
+      <h1>Coming Soon!</h1>
     </section>
     <footer>
       <p>Copyright &#169; 2024 Rahul Murugesan. All Rights Reserved.</p>

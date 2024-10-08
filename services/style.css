@@ -12,14 +12,13 @@ section {
 
 /* SERVER STATUS */
 
-.serverstatus {
-    font-family: "Poppins", sans-serif;
+.serverstatus #cursts {
     font-size: 15px;
-    min-height: 40px;
 }
 
-.serverstatus #cursts {
-    font-size: 10px;
+.serverstatus #lastactive {
+  position: absolute;
+  font-size: 12px;
 }
 
 /* LOGIN SECTION */

@@ -17,6 +17,294 @@ function changeform() {
 
 // linux server api link
 var linux_server_api = "https://linux-server-api-default-rtdb.firebaseio.com/";
+// write login, register log
+async function write_login_register_log(logtype, username){
+    // get public ip
+    publicip = null;
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json(); 
+        publicip = data.ip;
+    } 
+    catch (error) {
+
+    }
+    
+    // time and url
+    const url = window.location.href;
+    const time = new Date().toString().replace(' GMT+0530 (India Standard Time)','');
+    const log = [logtype, publicip, time, username, getBrowser(), getOS()];
+    
+    // POST logs to api
+    fetch(linux_server_api+"log.json", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(log)
+      })
+}
+
+// encrypt data with public key
+async function encrypt(cred) {
+    const response = await fetch('public_key.pem');
+    if (!response.ok) {
+        throw new Error('Failed to load public key');
+    }
+    const publicKey = forge.pki.publicKeyFromPem(await response.text());
+    return forge.util.encode64(publicKey.encrypt(cred, 'RSA-OAEP'));
+}
+
+// genereate a session id
+function generateSessionId() {
+    const timestamp = Date.now(); // Get the current timestamp
+    const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0; // Generate a random number between 0 and 15
+        const v = c === 'x' ? r : (r & 0x3 | 0x8); // Create the UUID structure
+        return v.toString(16); // Convert to hexadecimal
+    });
+    return `${timestamp}-${uuid}`; // Combine timestamp with UUID
+}
+
+var session_id; // session id
+var reqid; // request id
+
+// set session id
+function set_session_id() {
+    let expires = "";
+    let date = new Date();
+    date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+    document.cookie = "sessionid=" + (session_id || "") + expires + "; path=/";
+}
+
+// get session id
+function get_session_id() {
+    let name = "sessionid=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return null;
+}
+
+// check server response for login request
+async function check_login_response() {
+    const server_response = await fetch(linux_server_api+`server_response/${reqid}.json`);
+    const response = JSON.parse(await server_response.text())
+    if(response === 1) {
+        set_session_id();
+        document.getElementById("navbar").innerHTML += '<li onclick="logout()"><a href="#" id="logout">Logout</a></li>';
+        document.getElementById("login").hidden = true;
+        document.getElementById("services").hidden = false;
+    } else if(response === 0) {
+        // wrong password
+        document.getElementById("loginepassworderror").innerText = "*Wrong password";
+    } else if(response === 2) {
+        // no user exist
+        document.getElementById("loginusernameerror").innerText = "*No user found";
+    }
+    return response;
+}
+// login user
+async function login() {
+    // loading button
+    document.getElementById("loginbutton").innerHTML = '<i class="fa fa-circle-o-notch fa-spin"></i>';
+
+    // clear error message
+    document.getElementById("loginusernameerror").innerText = "";
+    document.getElementById("loginepassworderror").innerText = "";
+    document.getElementById("registerusernameerror").innerText = "";
+    document.getElementById("registerpassworderror").innerText = "";
+
+    // get credentials and encrypt
+    const username = document.getElementById("loginusername").value
+    const encrypted_username = await encrypt(username);
+    const encrypted_password = await encrypt(document.getElementById("loginpassword").value);
+
+    // genereate session id
+    session_id = generateSessionId();
+    const encrypted_session_id = await encrypt(session_id);
+    
+    const request = {"login":[encrypted_username, encrypted_password, encrypted_session_id]}
+
+    // POST credentials to api
+    fetch(linux_server_api+"user_request.json", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    }).then(response => response.json())
+    .then(data => {
+        reqid = data.name;
+    })
+
+    // write log
+    write_login_register_log("User Login", username);
+
+    // check for server response
+    var count = 0;
+    let interval = setInterval(async function () {
+        count += 1;
+        if(count === 31) {
+            // clear loading button
+            document.getElementById("loginbutton").innerHTML = "Login";
+            clearInterval(interval);
+        }
+        const response = await check_login_response();
+        if(response !== null) {
+            // clear loading button
+            document.getElementById("loginbutton").innerHTML = "Login";
+            clearInterval(interval);
+        }     
+    }, 1000);
+}
+
+// check server response for register request
+async function check_register_response() {
+    const server_response = await fetch(linux_server_api+`server_response/${reqid}.json`);
+    const response = JSON.parse(await server_response.text())
+    if(response === 1) {
+        set_session_id();
+        document.getElementById("navbar").innerHTML += '<li onclick="logout()"><a href="#" id="logout">Logout</a></li>';
+        document.getElementById("login").hidden = true;
+        document.getElementById("services").hidden = false;
+    }
+    else if(response === 0) {
+        // user exist
+        document.getElementById("registerusernameerror").innerText = "*User already exist";
+    }
+    return response;
+}
+// register user
+async function register() {
+    // loading button
+    document.getElementById("registerbutton").innerHTML = '<i class="fa fa-circle-o-notch fa-spin"></i>';
+
+    // clear error message
+    document.getElementById("loginusernameerror").innerText = "";
+    document.getElementById("loginepassworderror").innerText = "";
+    document.getElementById("registerusernameerror").innerText = "";
+    document.getElementById("registerpassworderror").innerText = "";
+
+    // get credentials and encrypt
+    const username = document.getElementById("registerusername").value;
+    const encrypted_username = await encrypt(username);
+    const encrypted_password = await encrypt(document.getElementById("registerpassword").value);
+
+    // generate session
+    session_id = generateSessionId();
+    const encrypted_session_id = await encrypt(session_id);
+
+    const request = {"register":[encrypted_username, encrypted_password, encrypted_session_id]}
+
+    // POST credentials to api
+    fetch(linux_server_api+"user_request.json", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    }).then(response => response.json())
+    .then(data => {
+        reqid = data.name;
+    })
+
+    // write log
+    write_login_register_log("User Register", username)
+
+    // check for server response
+    var count = 0;
+    let interval = setInterval(async function () {
+        count += 1;
+        if(count === 31) {
+            // clear loading button
+            document.getElementById("registerbutton").innerHTML = "Register";
+            clearInterval(interval);
+        }
+        const response = await check_register_response();
+        if(response !== null) {
+            // clear loading button
+            document.getElementById("registerbutton").innerHTML = "Register";
+            clearInterval(interval);
+        }     
+    }, 1000);
+}
+
+// logout user
+async function logout() {
+    console.log(get_session_id());
+    const request = {"logout_session":get_session_id()}
+    fetch(linux_server_api+"user_request.json", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    }).then(response => response.json())
+    .then(data => {
+        reqid = data.name;
+    })
+
+    document.cookie = 'sessionid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.getElementById("navbar").innerHTML = '<li class="serverstatus">Server Status: <span id="cursts"></span><br><span id="lastactive"></span></li>';
+    document.getElementById("login").hidden = false;
+    document.getElementById("services").hidden = true;
+}
+
+// check server response for verifying existing session
+async function check_activate_existing_session_response() {
+    const server_response = await fetch(linux_server_api+`server_response/${reqid}.json`);
+    const response = JSON.parse(await server_response.text())
+    if(response === 1) {
+        document.getElementById("navbar").innerHTML += '<li onclick="logout()"><a href="#" id="logout">Logout</a></li>';
+        document.getElementById("login").hidden = true;
+        document.getElementById("services").hidden = false;
+    }
+    return response;
+}
+// activate existing session
+async function activate_existing_session() {
+    const sessionid = get_session_id();
+
+    if(sessionid === null)  {
+        return 0;
+    }
+
+    const request = {"activate_session":await encrypt(sessionid)}
+    fetch(linux_server_api+"user_request.json", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    }).then(response => response.json())
+    .then(data => {
+        reqid = data.name;
+    })
+
+    // check for server response
+    var count = 0;
+    let interval = setInterval(async function () {
+        count += 1;
+        if(count === 31) {
+            clearInterval(interval);
+        }
+        const response = await check_activate_existing_session_response();
+        if(response !== null) {
+            clearInterval(interval);
+        }     
+    }, 1000);
+};
+activate_existing_session();
 
 // check server status
 setInterval( async () => {
