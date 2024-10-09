@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Services</title>
     <link rel="icon" type="image/x-icon" href="../image/services-favicon.png">
-    <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="stylesheet" href="../style.css" />
     <script src="../script.js"></script>
     <script src="../logs.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.10.0/forge.min.js"></script>
@@ -17,9 +17,11 @@
   </head>
   <body>
     <nav id="desktop-nav" class="servicesnavbar">
+      <div class="logo">Services</div>
       <div>
         <ul class="nav-links" id="navbar">
-          <li class="serverstatus">Server Status: <span id="cursts"></span><br><span id="lastactive"></span></li>
+          <li class="serverstatus">Server Status: <span id="cursts">🟡</span><br><span id="lastactive"></span></li>
+          <li onclick="logout()" id="logout" style ="visibility: hidden;"><a>Logout</a></li>
         </ul>
       </div>
     </nav>
@@ -54,10 +56,31 @@
         </div>
       </div>
     </section>
-    <section id="services" hidden>
-      <h1>Coming Soon!</h1>
+    <section id="services">
+      <div class="experience-details-container">
+        <div class="services-containers">
+          <div class="services-container color-container">
+            <div class="article-container">
+              <img
+                src="../image/project/culinary.jpg"
+                alt="culinary"
+                class="services-img"
+              />
+            </div>
+            <h2 class="services-title">Culinary-Companion</h2>
+            <p class="section__text__p1">
+              AI tool to suggest recipe and step-by-step guide.
+            </p>
+            <div class="btn-container">
+              <button class="btn btn-color-1 services-btn">
+                try
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    <footer id="footer">
+    <footer id="footer" hidden>
       <p>Copyright &#169; 2024 Rahul Murugesan. All Rights Reserved.</p>
     </footer>
   </body>

@@ -114,9 +114,9 @@ async function check_login_response() {
     const response = JSON.parse(await server_response.text())
     if(response === 1) {
         set_session_id();
-        document.getElementById("navbar").innerHTML += '<li onclick="logout()"><a href="#" id="logout">Logout</a></li>';
-        document.getElementById("login").style.displayden = "none";
-        document.getElementById("services").hidden = false;
+        document.getElementById("logout").style.visibility = "visible";
+        document.getElementById("login").style.display = "none";
+        document.getElementById("services").style.display = "flex";
     } else if(response === 0) {
         // wrong password
         document.getElementById("loginepassworderror").innerText = "*Wrong password";
@@ -187,9 +187,9 @@ async function check_register_response() {
     const response = JSON.parse(await server_response.text())
     if(response === 1) {
         set_session_id();
-        document.getElementById("navbar").innerHTML += '<li onclick="logout()"><a href="#" id="logout">Logout</a></li>';
+        document.getElementById("logout").style.visibility = "visible";
         document.getElementById("login").style.display = "none";
-        document.getElementById("services").hidden = false;
+        document.getElementById("services").style.display = "flex";
     }
     else if(response === 0) {
         // user exist
@@ -254,7 +254,6 @@ async function register() {
 
 // logout user
 async function logout() {
-    console.log(get_session_id());
     const request = {"logout_session":get_session_id()}
     fetch(linux_server_api+"user_request.json", {
         method: 'POST',
@@ -268,9 +267,9 @@ async function logout() {
     })
 
     document.cookie = 'sessionid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.getElementById("navbar").innerHTML = '<li class="serverstatus">Server Status: <span id="cursts"></span><br><span id="lastactive"></span></li>';
+    document.getElementById("logout").style.visibility = "hidden";
     document.getElementById("login").style.display = "flex";
-    document.getElementById("services").hidden = true;
+    document.getElementById("services").style.display = "none";
 }
 
 // check server response for verifying existing session
@@ -278,9 +277,9 @@ async function check_activate_existing_session_response() {
     const server_response = await fetch(linux_server_api+`server_response/${reqid}.json`);
     const response = JSON.parse(await server_response.text())
     if(response === 1) {
-        document.getElementById("navbar").innerHTML += '<li onclick="logout()"><a href="#" id="logout">Logout</a></li>';
+        document.getElementById("logout").style.visibility = "visible";
         document.getElementById("login").style.display = "none";
-        document.getElementById("services").hidden = false;
+        document.getElementById("services").style.display = "flex";
     }
     return response;
 }
@@ -310,12 +309,15 @@ async function activate_existing_session() {
     var count = 0;
     let interval = setInterval(async function () {
         count += 1;
-        if(count === 11) {
+        if(count > 11) {
             document.getElementById("loadercontainer").style.display = "none";
+            document.getElementById("footer").hidden = false;
             clearInterval(interval);
         }
         const response = await check_activate_existing_session_response();
-        if(response !== null) {
+        if(response === 1) {
+            document.getElementById("services").style.display = "flex";
+            document.getElementById("footer").hidden = false;
             document.getElementById("loadercontainer").style.display = "none";
             clearInterval(interval);
         }     
