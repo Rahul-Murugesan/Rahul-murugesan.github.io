@@ -24,10 +24,10 @@ async function isServerActive() {
     const server_status = JSON.parse(await response.text()).last_active * 1000;
 
     const timeDifference = (Date.now() - server_status);
-    if (timeDifference >= 10000) {
-        return true;
+    if (timeDifference <= 5000) {
+        return 1;
     }
-    return false;
+    return 0;
 }
 
 // write login, register log
@@ -288,7 +288,7 @@ async function check_activate_existing_session_response() {
 async function activate_existing_session() {
     const sessionid = get_session_id();
 
-    if(sessionid === null || isServerActive() === false)  {
+    if(sessionid === null || await isServerActive() === 0)  {
         document.getElementById("loadercontainer").style.display = "none";
         document.getElementById("login").style.display = "flex";
         return 0;
@@ -310,7 +310,7 @@ async function activate_existing_session() {
     var count = 0;
     let interval = setInterval(async function () {
         count += 1;
-        if(count === 31) {
+        if(count === 11) {
             document.getElementById("loadercontainer").style.display = "none";
             clearInterval(interval);
         }
@@ -340,15 +340,17 @@ setInterval( async () => {
         seconds %= 60;
 
         let result = '';
+        var addseconds = true;
 
         if (hours > 0) {
+            addseconds = false;
             result += `${hours} hr${hours > 1 ? 's' : ''} `;
-        }
-        else if (seconds > 0 || result === '') {
-            result += `${seconds} sec${seconds > 1 ? 's' : ''} `;
         }
         if (minutes > 0) {
             result += `${minutes} min${minutes > 1 ? 's' : ''} `;
+        }
+        if (seconds > 0 && addseconds) {
+            result += `${seconds} sec${seconds > 1 ? 's' : ''} `;
         }
 
         document.getElementById("cursts").innerText = "🔴";
