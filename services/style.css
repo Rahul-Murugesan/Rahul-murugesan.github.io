@@ -1,13 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
-/* SECTIONS */
+body {
+  height: 100vh;
+}
 
-section {
-    padding-top: 4vh;
-    height: 96vh;
-    margin: 0 30rem;
-    box-sizing: border-box;
-    min-height: fit-content;
+/* LOADING SCREEN */
+
+#loadercontainer {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#loader {
+  border: 16px solid rgb(163, 163, 163);
+  border-top: 16px solid rgb(53, 53, 53);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* LOGIN */
+
+#login {
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
 }
 
 /* SERVER STATUS */
@@ -73,5 +100,10 @@ section {
     min-height: 20px;
     color: red;
     font-size: 13px;
-  
-  }
+}
+
+/* FOOTER */
+
+#footer {
+  display: none;
+}

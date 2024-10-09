@@ -17,6 +17,19 @@ function changeform() {
 
 // linux server api link
 var linux_server_api = "https://linux-server-api-default-rtdb.firebaseio.com/";
+
+// check server online or not
+async function isServerActive() {
+    const response = await fetch(linux_server_api+'server_status.json');
+    const server_status = JSON.parse(await response.text()).last_active * 1000;
+
+    const timeDifference = (Date.now() - server_status);
+    if (timeDifference >= 10000) {
+        return true;
+    }
+    return false;
+}
+
 // write login, register log
 async function write_login_register_log(logtype, username){
     // get public ip
@@ -102,7 +115,7 @@ async function check_login_response() {
     if(response === 1) {
         set_session_id();
         document.getElementById("navbar").innerHTML += '<li onclick="logout()"><a href="#" id="logout">Logout</a></li>';
-        document.getElementById("login").hidden = true;
+        document.getElementById("login").style.displayden = "none";
         document.getElementById("services").hidden = false;
     } else if(response === 0) {
         // wrong password
@@ -175,7 +188,7 @@ async function check_register_response() {
     if(response === 1) {
         set_session_id();
         document.getElementById("navbar").innerHTML += '<li onclick="logout()"><a href="#" id="logout">Logout</a></li>';
-        document.getElementById("login").hidden = true;
+        document.getElementById("login").style.display = "none";
         document.getElementById("services").hidden = false;
     }
     else if(response === 0) {
@@ -256,7 +269,7 @@ async function logout() {
 
     document.cookie = 'sessionid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.getElementById("navbar").innerHTML = '<li class="serverstatus">Server Status: <span id="cursts"></span><br><span id="lastactive"></span></li>';
-    document.getElementById("login").hidden = false;
+    document.getElementById("login").style.display = "flex";
     document.getElementById("services").hidden = true;
 }
 
@@ -266,7 +279,7 @@ async function check_activate_existing_session_response() {
     const response = JSON.parse(await server_response.text())
     if(response === 1) {
         document.getElementById("navbar").innerHTML += '<li onclick="logout()"><a href="#" id="logout">Logout</a></li>';
-        document.getElementById("login").hidden = true;
+        document.getElementById("login").style.display = "none";
         document.getElementById("services").hidden = false;
     }
     return response;
@@ -275,7 +288,9 @@ async function check_activate_existing_session_response() {
 async function activate_existing_session() {
     const sessionid = get_session_id();
 
-    if(sessionid === null)  {
+    if(sessionid === null || isServerActive() === false)  {
+        document.getElementById("loadercontainer").style.display = "none";
+        document.getElementById("login").style.display = "flex";
         return 0;
     }
 
@@ -296,15 +311,19 @@ async function activate_existing_session() {
     let interval = setInterval(async function () {
         count += 1;
         if(count === 31) {
+            document.getElementById("loadercontainer").style.display = "none";
             clearInterval(interval);
         }
         const response = await check_activate_existing_session_response();
         if(response !== null) {
+            document.getElementById("loadercontainer").style.display = "none";
             clearInterval(interval);
         }     
     }, 1000);
 };
-activate_existing_session();
+document.addEventListener("DOMContentLoaded", function() {
+    activate_existing_session();
+});
 
 // check server status
 setInterval( async () => {
@@ -325,11 +344,11 @@ setInterval( async () => {
         if (hours > 0) {
             result += `${hours} hr${hours > 1 ? 's' : ''} `;
         }
+        else if (seconds > 0 || result === '') {
+            result += `${seconds} sec${seconds > 1 ? 's' : ''} `;
+        }
         if (minutes > 0) {
             result += `${minutes} min${minutes > 1 ? 's' : ''} `;
-        }
-        if (seconds > 0 || result === '') {
-            result += `${seconds} sec${seconds > 1 ? 's' : ''} `;
         }
 
         document.getElementById("cursts").innerText = "🔴";
