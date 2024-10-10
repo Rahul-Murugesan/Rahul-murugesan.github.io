@@ -309,9 +309,10 @@ async function activate_existing_session() {
     var count = 0;
     let interval = setInterval(async function () {
         count += 1;
-        if(count > 11) {
-            document.getElementById("loadercontainer").style.display = "none";
+        if(count >= 6) {
+            document.getElementById("login").style.display = "flex";
             document.getElementById("footer").hidden = false;
+            document.getElementById("loadercontainer").style.display = "none";
             clearInterval(interval);
         }
         const response = await check_activate_existing_session_response();
