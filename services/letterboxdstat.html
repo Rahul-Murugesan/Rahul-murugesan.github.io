@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Letterboxd Stat (Unofficial)</title>
+    <link rel="icon" type="image/x-icon" href="../image/letterboxd-favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js"></script>
+    <script src="../logs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.10.0/forge.min.js"></script>
+    <script src="server_util.js"></script>
+    <script src="services.js"></script>
+  </head>
+  <body>
+    <nav id="desktop-nav" class="servicesnavbar">
+      <div class="logo">Letterboxd Stat (Unofficial)</div>
+      <div>
+        <ul class="nav-links" id="navbar">
+          <li class="serverstatus">Server Status: <span id="cursts">🟡</span><br><span id="lastactive"></span></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="loadercontainer">
+      <div id="loader"></div>
+    </div>
+    <section id="services">
+        <div class="experience-details-container">
+          <div class="services-containers">
+            <div class="services-container color-container">
+              <div class="article-container">
+                <img
+                  src="../image/letterboxd-logo.png"
+                  alt="letterboxd"
+                  class="services-img"
+                />
+              </div>
+              <h2 class="services-title">Get Letterboxd Stat</h2>
+              <input id="letterboxdusername" type="text" placeholder="Letterboxd Username"/>
+              <div class="btn-container">
+                <button type="button" id="statbutton" class="btn btn-color-1" onclick="letterboxdstat()">Get Stat</button>
+              </div>
+              <h4 ></h4>
+              <label id="stat"></label>
+            </div>
+          </div>
+        </div>
+      </section>
+    <footer id="footer" hidden>
+        <p>Copyright &#169; 2024 Rahul Murugesan. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

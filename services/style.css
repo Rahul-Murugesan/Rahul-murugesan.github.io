@@ -92,6 +92,18 @@ body {
     font-size: 14px;
 }
 
+input {
+  font-family: 'Montserrat', sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 60%;
+  border: 0;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
 .form-container label {
     font-family: 'Montserrat', sans-serif;
     display: block;
